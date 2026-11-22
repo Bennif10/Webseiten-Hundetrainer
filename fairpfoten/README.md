@@ -1,10 +1,10 @@
 # Fairpfoten – Website
 
 Website für **Fairpfoten Hundetraining – mit Herz und Haltung.**
-Moderner, ruhiger Auftritt als Personal Brand mit interaktiver Terminanfrage.
+Moderner, ruhiger Auftritt als Personal Brand mit Anfrageformular, das eine fertige E-Mail vorbereitet.
 
 - **Stack:** Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · Lucide React · ESLint 9
-- **Seiten:** Start, Über mich, Trainingsangebote, Termine, FAQ, Kontakt, Impressum, Datenschutz
+- **Seiten:** Start, Über mich, Trainingsangebote, Anfrage, FAQ, Kontakt, Impressum, Datenschutz
 - **Datenschutz:** keine Cookies, kein Tracking, Schriften selbst gehostet, keine externen Requests zur Laufzeit
 
 > **Inhaltliche Grundlage** ist das Plakat „Was Hunde für ein gutes Leben brauchen“
@@ -41,8 +41,9 @@ Danach im Browser <http://localhost:3000> öffnen.
 | `npm run check`     | Typecheck + Lint + Build in einem Durchgang   |
 
 > **Hinweis OneDrive:** Das Projekt liegt in einem OneDrive-Ordner. `node_modules` und `.next`
-> enthalten zehntausende Dateien – es empfiehlt sich, diese Ordner in OneDrive von der
-> Synchronisierung auszuschließen oder das Projekt außerhalb von OneDrive abzulegen.
+> enthalten zehntausende Dateien. Solange OneDrive diese synchronisiert, kann `npm run dev` hängen
+> (die Seite lädt, reagiert aber nicht auf Eingaben). Abhilfe: diese Ordner von der Synchronisierung
+> ausschließen, das Projekt außerhalb von OneDrive ablegen oder mit `npm run build && npm run start` testen.
 
 ## Umgebungsvariablen
 
@@ -51,7 +52,7 @@ Danach im Browser <http://localhost:3000> öffnen.
 | Variable                    | Bedeutung                                                             |
 | --------------------------- | --------------------------------------------------------------------- |
 | `NEXT_PUBLIC_SITE_URL`      | Öffentliche Domain (Sitemap, Open Graph, kanonische Links)            |
-| `NEXT_PUBLIC_CONTACT_EMAIL` | Empfängeradresse für Termin- und Kontaktanfragen                      |
+| `NEXT_PUBLIC_CONTACT_EMAIL` | Empfängeradresse für Trainings- und Kontaktanfragen                      |
 
 Ohne `.env.local` gelten `http://localhost:3000` und die Platzhalter-Adresse `kontakt@fairpfoten.example`.
 
@@ -67,26 +68,26 @@ src/
 │  ├─ page.tsx            Startseite
 │  ├─ ueber-mich/         Über mich
 │  ├─ trainingsangebote/  Angebote
-│  ├─ termine/            Terminübersicht
+│  ├─ anfrage/            Anfrageformular
 │  ├─ faq/, kontakt/, impressum/, datenschutz/
 │  ├─ layout.tsx          Grundlayout, Schriften, globale Metadaten
 │  └─ globals.css         Designsystem (Farben, Schriften, Animationen)
 ├─ components/
 │  ├─ layout/             Header (inkl. Mobilmenü), Footer, Logo
 │  ├─ sections/           Seitenbausteine (Hero, Bedürfnisse, Angebote, FAQ …)
-│  ├─ booking/            Kalender, Zeitfenster, Angebotswahl, Zusammenfassung
+│  ├─ inquiry/            Anfrageformular, Auswahl-Chips, E-Mail-Vorschau
 │  ├─ forms/              Formularfelder, Kontaktformular, mailto-Hinweis
 │  ├─ seo/                Strukturierte Daten (schema.org)
 │  └─ ui/                 Button, Container, SectionHeading, Platzhalter
 ├─ config/
 │  ├─ site.ts             Stammdaten: Name, Kontakt, Navigation, Social Media
-│  └─ availability.ts     ⏰ Verfügbare Zeitfenster
+│  └─ inquiry.ts          ✉️ Anfrage: Auswahloptionen, Zusatzfragen, E-Mail-Vorlage
 ├─ data/
 │  ├─ services.ts         Trainingsangebote
 │  ├─ needs.ts            Die sechs Grundbedürfnisse (vom Plakat)
 │  ├─ faq.ts              Häufige Fragen
 │  └─ people.ts           Kundenstimmen, eigene Hunde, Qualifikationen
-├─ lib/                   Logik ohne UI: Datum, Verfügbarkeit, E-Mail, Validierung
+├─ lib/                   Logik ohne UI: E-Mail-Aufbau, Validierung, Metadaten
 └─ types/                 Gemeinsame TypeScript-Typen
 ```
 
@@ -127,7 +128,7 @@ name: "Vorname Nachname",
 ```
 
 Angebote erscheinen automatisch auf der Startseite (die ersten drei), der Angebotsseite und in der
-Terminanfrage. Jede Karte verlinkt auf `/termine?angebot=<id>` und wählt das Angebot dort vor.
+Anfrageformular. Jede Karte verlinkt auf `/anfrage?angebot=<id>` und wählt das Paket dort vor.
 
 ### Weitere Texte
 
@@ -145,40 +146,56 @@ Kundenstimmen bitte nur mit Einverständnis der Personen veröffentlichen.
 
 ---
 
-## Termine verwalten – `src/config/availability.ts`
+## Anfrage & E-Mail-Vorlage – `src/config/inquiry.ts`
+
+Es gibt bewusst **keinen Kalender**, der gepflegt werden muss. Interessierte wählen auf `/anfrage`:
+
+1. **ein Paket** (aus `src/data/services.ts`),
+2. **wann sie grob Zeit haben** – Wochentage, Tageszeiten, „Ab wann?“ und ein freier Hinweis,
+3. **Angaben zu sich und ihrem Hund**.
+
+Daraus entsteht eine fertige E-Mail, die rechts (mobil: aufklappbar) live als Vorschau angezeigt wird.
+Die Trainerin antwortet dann einfach mit einem Terminvorschlag.
 
 ```ts
-export const availabilityConfig = {
-  isExampleData: true,          // → auf false setzen, sobald echte Zeiten eingetragen sind
-  slotDurationMinutes: 60,      // Dauer eines Zeitfensters
-  bookingWindowDays: 90,        // so weit im Voraus kann angefragt werden
-  minLeadTimeHours: 24,         // Mindestvorlauf
-
-  weeklySchedule: {             // 0 = So, 1 = Mo … 6 = Sa
-    1: ["09:00", "10:30", "15:00"],
-    // …
+export const inquiryConfig = {
+  weekdays: ["Montag", …, "Sonntag"],   // Tage ohne Training einfach entfernen
+  dayparts: ["Vormittags", "Mittags", "Nachmittags", "Abends"],
+  startOptions: ["So bald wie möglich", "In den nächsten Wochen", "Später / ich bin flexibel"],
+  defaultQuestions: [                   // erscheinen bei jedem Paket (optional auszufüllen)
+    { id: "dog-name", label: "Name des Hundes", placeholder: "z. B. Balu" },
+    …
+  ],
+  email: {                              // Textbausteine der E-Mail
+    subject: (paket, name) => `Anfrage: ${paket} – ${name}`,
+    greeting: "Hallo,",
+    intro: (paket) => `ich interessiere mich für „${paket}“ …`,
+    closing: "Ich freue mich auf deine Rückmeldung!",
+    signOff: "Viele Grüße",
   },
-  blockedDates: ["2026-12-24"],                       // ganze Tage sperren (Urlaub, Feiertage)
-  bookedSlots: [{ date: "2026-12-01", time: "09:00" }], // einzelne Slots als „belegt“ markieren
-  extraSlots: [{ date: "2026-12-05", times: ["14:00"] }], // zusätzliche Slots an einzelnen Tagen
 };
 ```
 
-Regeln in der Oberfläche:
+**Zusatzfragen nur für ein bestimmtes Paket** werden direkt beim Paket in `src/data/services.ts` eingetragen:
 
-- Tage ohne freie Zeitfenster, vergangene Tage und Tage außerhalb des Buchungsfensters sind nicht wählbar.
-- Belegte Slots und Slots innerhalb des Mindestvorlaufs werden angezeigt, sind aber deaktiviert.
-- Datums- und Uhrzeitangaben werden in der lokalen Zeit des Besuchers ausgewertet (für eine Trainerin in
-  Deutschland mit Kundschaft in Deutschland unproblematisch).
+```ts
+{
+  id: "welpenkurs",
+  title: "Welpenkurs",
+  …
+  inquiryQuestions: [
+    { id: "welpe-alter", label: "Wie alt ist dein Welpe?", placeholder: "z. B. 12 Wochen" },
+  ],
+}
+```
 
-Nach jeder Änderung neu bauen bzw. deployen – die Daten sind statisch.
+Sie erscheinen im Formular nur, wenn dieses Paket gewählt ist, und werden unter „Zu meinem Hund“ in die
+E-Mail übernommen.
 
-### Wie funktioniert die Anfrage?
+### Wie wird die Anfrage verschickt?
 
-Es handelt sich um eine **unverbindliche Terminanfrage**, keine Buchung. Beim Absenden wird per
-`mailto:` das E-Mail-Programm des Besuchers mit einer vorformulierten Nachricht geöffnet.
-
-⚠️ Dabei gibt es **keine garantierte Übermittlung**: Die Anfrage kommt erst an, wenn der Besucher die
+Beim Absenden wird per `mailto:` das E-Mail-Programm des Besuchers mit der vorbereiteten Nachricht
+geöffnet. ⚠️ Es gibt **keine garantierte Übermittlung**: Die Anfrage kommt erst an, wenn der Besucher die
 E-Mail tatsächlich abschickt. Hat jemand kein E-Mail-Programm eingerichtet, kann die Anfrage auf der
 Bestätigungsseite kopiert werden. Das wird auf der Website transparent kommuniziert.
 
@@ -228,7 +245,7 @@ Schriften: **Cormorant Garamond** (Überschriften) und **Inter** (Fließtext), e
 - Strukturierte Daten `LocalBusiness` (nur bekannte Angaben) und `FAQPage` (nur beantwortete Fragen)
   → Adresse/Gebiet in `src/components/seo/LocalBusinessJsonLd.tsx` ergänzen, sobald bekannt
 - Semantisches HTML, Skip-Link, sichtbare Fokuszustände, beschriftete Formulare, native Radio-Buttons
-  für Angebots- und Zeitwahl, Kalender mit ausführlichen Screenreader-Beschriftungen
+  und Checkboxen für Paket- und Zeitwahl
 
 ---
 
@@ -244,10 +261,9 @@ Die Architektur ist so angelegt, dass diese Punkte ohne Umbau der Oberfläche er
    an den Route Handler senden. Spam-Schutz (z. B. Honeypot, Rate-Limit) ergänzen.
 4. Datenschutzerklärung anpassen.
 
-**Google Calendar / echte Verfügbarkeiten**
-1. Einen neuen Provider implementieren, der das Interface `AvailabilityProvider`
-   (`src/lib/booking/availability.ts`) erfüllt – z. B. Abfrage der Free/Busy-Zeiten über einen Route Handler.
-2. In `BookingWidget.tsx` den statischen Provider durch den neuen ersetzen.
+**Online-Terminbuchung (falls später doch gewünscht)**
+Statt eines eigenen Kalenders lieber einen fertigen Dienst (z. B. Cal.com oder Calendly) verlinken oder
+einbetten – das pflegt die Trainerin dann direkt in ihrem Kalender. Datenschutzerklärung anpassen.
 
 **Verbindliche Buchung**
 Erfordert serverseitige Speicherung (Datenbank), Reservierungslogik gegen Doppelbuchungen,
@@ -264,9 +280,11 @@ Nur mit Datenschutzkonzept und ggf. Einwilligungsbanner. Aktuell bewusst nicht e
 - **Ansprache „du“:** passend zum persönlichen, warmen Markenauftritt. Bei Wunsch nach „Sie“ müssen
   die Texte in `src/` angepasst werden.
 - **Statische Seiten:** Alle Seiten werden beim Build vorgerendert (schnell, günstig zu hosten).
-  Der Kalender rechnet clientseitig mit der aktuellen Uhrzeit.
-- **Keine zusätzlichen UI-/Datums-Bibliotheken:** Kalender und Formulare sind schlank selbst umgesetzt
-  (natives `Intl` für Datumsformate, `<details>` für die FAQ).
+- **Anfrage statt Kalender:** Die Trainerinnen arbeiten nebenberuflich – ein Kalender mit freien Slots
+  wäre zu aufwendig zu pflegen. Stattdessen geben Interessierte grob an, wann sie Zeit haben, und
+  bekommen einen persönlichen Terminvorschlag.
+- **Keine zusätzlichen UI-Bibliotheken:** Formulare sind schlank selbst umgesetzt (native Checkboxen/
+  Radio-Buttons, `<details>` für die FAQ).
 - **Platzhalter statt erfundener Inhalte:** Angebote, Preise, Kundenstimmen, Qualifikationen, Kontaktdaten
   und Rechtstexte sind sichtbar markiert.
 
@@ -276,7 +294,7 @@ Nur mit Datenschutzkonzept und ggf. Einwilligungsbanner. Aktuell bewusst nicht e
 - Qualifikationen, Zertifikate, Erfahrung (inkl. ggf. Erlaubnis nach § 11 TierSchG)
 - Eigene Hunde (Namen, Beschreibungen, Fotos)
 - Konkrete Trainingsangebote (Name, Beschreibung, Zielgruppe, Dauer, ggf. Preise)
-- Echte Verfügbarkeiten / Zeitfenster
+- Trainingstage/-zeiten (um die Auswahl im Anfrageformular ggf. einzuschränken)
 - E-Mail-Adresse, Telefonnummer (optional), Trainingsgebiet/Ort
 - Social-Media-Profile
 - Antworten für die FAQ

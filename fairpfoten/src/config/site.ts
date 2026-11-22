@@ -47,7 +47,7 @@ export const mainNav: NavItem[] = [
   { label: "Start", href: "/" },
   { label: "Über mich", href: "/ueber-mich" },
   { label: "Training", href: "/trainingsangebote" },
-  { label: "Termine", href: "/termine" },
+  { label: "Anfrage", href: "/anfrage" },
   { label: "FAQ", href: "/faq" },
   { label: "Kontakt", href: "/kontakt" },
 ];

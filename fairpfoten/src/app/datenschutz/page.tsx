@@ -42,9 +42,9 @@ export default function PrivacyPage() {
         von Google oder anderen Schriftanbietern statt.
       </p>
 
-      <h2>5. Kontaktformular und Terminanfrage</h2>
+      <h2>5. Kontakt- und Anfrageformular</h2>
       <p>
-        Kontaktformular und Terminanfrage übermitteln keine Daten an unseren Server. Beim Absenden wird stattdessen dein
+        Kontakt- und Anfrageformular übermitteln keine Daten an unseren Server. Beim Absenden wird stattdessen dein
         eigenes E-Mail-Programm mit einer vorbereiteten Nachricht geöffnet. Die Daten erreichen uns erst, wenn du diese
         E-Mail selbst abschickst.
       </p>

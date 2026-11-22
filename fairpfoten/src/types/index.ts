@@ -1,11 +1,5 @@
 import type { LucideIcon } from "lucide-react";
 
-/** ISO-Datum im Format YYYY-MM-DD (lokale Kalenderzeit, ohne Uhrzeit). */
-export type ISODate = string;
-
-/** Uhrzeit im Format HH:MM (24h). */
-export type TimeOfDay = string;
-
 export interface NavItem {
   label: string;
   href: string;
@@ -42,6 +36,8 @@ export interface TrainingService {
   durationMinutes?: number;
   /** Preis als Anzeige-Text, NUR wenn tatsächlich bekannt. */
   price?: string;
+  /** Zusätzliche Fragen im Anfrageformular nur für dieses Paket (optional). */
+  inquiryQuestions?: InquiryQuestion[];
   /** true = Inhalt ist noch ein Platzhalter und muss ersetzt werden. */
   isPlaceholder: boolean;
 }
@@ -64,41 +60,23 @@ export interface Dog {
   isPlaceholder: boolean;
 }
 
-/* ---------- Terminanfrage ---------- */
+/* ---------- Anfrage ---------- */
 
-export interface WeeklySchedule {
-  /** 0 = Sonntag, 1 = Montag … 6 = Samstag */
-  [weekday: number]: TimeOfDay[];
+/** Zusatzfrage im Anfrageformular (immer optional). */
+export interface InquiryQuestion {
+  id: string;
+  label: string;
+  placeholder?: string;
 }
 
-export interface AvailabilityConfig {
-  /** true = Beispieldaten, die vor dem Livegang ersetzt werden müssen. */
-  isExampleData: boolean;
-  slotDurationMinutes: number;
-  /** Wie viele Tage im Voraus können Termine angefragt werden? */
-  bookingWindowDays: number;
-  /** Mindestvorlauf in Stunden bis zum Termin. */
-  minLeadTimeHours: number;
-  weeklySchedule: WeeklySchedule;
-  /** Ganze Tage ohne Termine (Urlaub, Feiertage …). */
-  blockedDates: ISODate[];
-  /** Einzelne bereits belegte Zeitfenster. */
-  bookedSlots: { date: ISODate; time: TimeOfDay }[];
-  /** Zusätzliche Zeitfenster an bestimmten Tagen. */
-  extraSlots: { date: ISODate; times: TimeOfDay[] }[];
-}
-
-export type SlotStatus = "available" | "booked" | "past";
-
-export interface TimeSlot {
-  time: TimeOfDay;
-  status: SlotStatus;
-}
-
-export interface BookingRequest {
+export interface InquiryRequest {
   serviceId: string;
-  date: ISODate;
-  time: TimeOfDay;
+  weekdays: string[];
+  dayparts: string[];
+  start?: string;
+  timeNote?: string;
+  /** Antworten auf Zusatzfragen, Schlüssel = InquiryQuestion.id */
+  answers: Record<string, string>;
   name: string;
   email: string;
   phone?: string;

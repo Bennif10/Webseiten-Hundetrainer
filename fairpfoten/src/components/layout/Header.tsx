@@ -63,7 +63,7 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <div className="hidden sm:block">
-            <ButtonLink href="/termine">
+            <ButtonLink href="/anfrage">
               <CalendarHeart className="size-4" aria-hidden />
               Termin anfragen
             </ButtonLink>
@@ -108,7 +108,7 @@ export function Header() {
               );
             })}
           </ul>
-          <ButtonLink href="/termine" size="lg" onClick={close} className="mt-8 w-full">
+          <ButtonLink href="/anfrage" size="lg" onClick={close} className="mt-8 w-full">
             <CalendarHeart className="size-5" aria-hidden />
             Termin anfragen
           </ButtonLink>

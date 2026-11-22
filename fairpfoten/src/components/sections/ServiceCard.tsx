@@ -44,7 +44,7 @@ export function ServiceCard({ service, index }: { service: TrainingService; inde
       </dl>
 
       <Link
-        href={`/termine?angebot=${encodeURIComponent(service.id)}`}
+        href={`/anfrage?angebot=${encodeURIComponent(service.id)}`}
         className="mt-auto inline-flex items-center gap-2 self-start pt-7 font-medium text-sage-700 transition-colors hover:text-sage-900"
       >
         Dieses Training anfragen

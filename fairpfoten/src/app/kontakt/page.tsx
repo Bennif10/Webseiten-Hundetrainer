@@ -98,13 +98,13 @@ export default function ContactPage() {
             )}
 
             <div className="rounded-4xl bg-sage-700 p-7 text-cream-50">
-              <h3 className="text-2xl text-cream-50">Lieber direkt einen Termin?</h3>
+              <h3 className="text-2xl text-cream-50">Lieber direkt ein Training anfragen?</h3>
               <p className="mt-2 text-sm leading-relaxed text-sage-100">
-                In der Terminübersicht siehst du freie Zeitfenster und kannst unverbindlich anfragen.
+                Wähle ein Paket, gib an, wann du Zeit hast – und schick mir eine fertige Anfrage.
               </p>
-              <ButtonLink href="/termine" variant="inverse" className="mt-5">
+              <ButtonLink href="/anfrage" variant="inverse" className="mt-5">
                 <CalendarHeart className="size-4" aria-hidden />
-                Zur Terminübersicht
+                Zur Anfrage
               </ButtonLink>
             </div>
           </aside>

@@ -36,7 +36,7 @@ export function Hero() {
               Training entdecken
               <ArrowRight className="size-4" aria-hidden />
             </ButtonLink>
-            <ButtonLink href="/termine" variant="secondary" size="lg">
+            <ButtonLink href="/anfrage" variant="secondary" size="lg">
               <CalendarHeart className="size-4" aria-hidden />
               Termin anfragen
             </ButtonLink>

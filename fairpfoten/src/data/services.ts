@@ -10,7 +10,11 @@ import type { TrainingService } from "@/types";
  *   - `durationMinutes` / `price` nur eintragen, wenn sie feststehen
  *   - `isPlaceholder` danach auf `false` setzen
  *
- * Die `id` wird in der Terminanfrage verwendet – bitte kurz und ohne
+ * Optional: `inquiryQuestions` – zusätzliche Fragen, die im Anfrageformular
+ * nur bei diesem Paket erscheinen und in die E-Mail übernommen werden, z. B.
+ *   inquiryQuestions: [{ id: "welpe-alter", label: "Wie alt ist dein Welpe?" }]
+ *
+ * Die `id` wird im Anfrageformular verwendet – bitte kurz und ohne
  * Leerzeichen halten (z. B. "einzeltraining").
  */
 export const services: TrainingService[] = [

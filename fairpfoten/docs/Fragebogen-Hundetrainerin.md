@@ -48,31 +48,24 @@ Bitte für jedes Angebot diesen Block kopieren und ausfüllen:
 - Ort (bei dir, beim Kunden zu Hause, draußen, online …):
 - Dauer einer Einheit in Minuten:
 - Preis (oder „nicht auf der Website anzeigen“):
-- Kann man es über die Terminübersicht anfragen? ja / nein
+- Gibt es Fragen, die du bei diesem Paket immer vorab wissen möchtest? (z. B. beim Welpenkurs „Wie alt ist der Welpe?“) – eine Frage pro Zeile:
 
-## 5. Termine und Verfügbarkeit
+## 5. Zeiten und Anfragen
 
-5.1 Regelmäßige Trainingszeiten. Bitte die **Startzeiten** eintragen, Format HH:MM, durch Komma getrennt:
+Es gibt keinen Online-Kalender. Interessierte geben im Anfrageformular grob an, wann sie Zeit haben,
+und schicken dir eine fertige E-Mail. Du antwortest dann mit einem Terminvorschlag.
 
-| Wochentag  | Startzeiten (z. B. 09:00, 10:30, 15:00) |
-| ---------- | --------------------------------------- |
-| Montag     |                                         |
-| Dienstag   |                                         |
-| Mittwoch   |                                         |
-| Donnerstag |                                         |
-| Freitag    |                                         |
-| Samstag    |                                         |
-| Sonntag    |                                         |
+5.1 An welchen Wochentagen trainierst du grundsätzlich? (Nur diese Tage stehen dann zur Auswahl)
+  Montag / Dienstag / Mittwoch / Donnerstag / Freitag / Samstag / Sonntag
 
-5.2 Wie lang ist ein Zeitfenster standardmäßig (Minuten)?
+5.2 Zu welchen Tageszeiten? Vormittags / Mittags / Nachmittags / Abends
 
-5.3 Wie viele Tage im Voraus darf man anfragen (z. B. 60)?
+5.3 Was möchtest du in jeder Anfrage über den Hund wissen? Standardmäßig: Name, Alter, Rasse/Mix.
+  Weitere Fragen oder Änderungen:
 
-5.4 Wie kurzfristig darf man höchstens anfragen (Mindestvorlauf in Stunden, z. B. 24)?
+5.4 Wie lange dauert es ungefähr, bis du auf eine Anfrage antwortest (z. B. „innerhalb von 2 Tagen“)?
 
-5.5 Tage ohne Training (Urlaub, Feiertage, Fortbildungen), Format TT.MM.JJJJ oder TT.MM.–TT.MM.JJJJ:
-
-5.6 Wie werden Termine abgesagt bzw. verschoben? Gibt es eine Absagefrist oder Ausfallgebühr?
+5.5 Wie werden Termine abgesagt bzw. verschoben? Gibt es eine Absagefrist oder Ausfallgebühr?
 
 ## 6. Kontakt und Region
 

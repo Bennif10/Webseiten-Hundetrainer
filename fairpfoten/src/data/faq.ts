@@ -12,8 +12,8 @@ export const faqItems: FaqItem[] = [
   { question: "Wo findet das Training statt?" },
   { question: "Wie kann ich einen Termin absagen?" },
   {
-    question: "Ist meine Terminanfrage über die Website schon eine feste Buchung?",
+    question: "Ist meine Anfrage über die Website schon eine feste Terminbuchung?",
     answer:
-      "Nein. Über die Terminübersicht stellst du eine unverbindliche Anfrage. Der Termin ist erst reserviert, wenn du eine persönliche Bestätigung erhalten hast.",
+      "Nein. Über das Anfrageformular gibst du an, welches Paket dich interessiert und wann du grundsätzlich Zeit hast. Daraufhin bekommst du einen persönlichen Terminvorschlag – fest ist der Termin erst, wenn wir ihn gemeinsam vereinbart haben.",
   },
 ];

@@ -22,7 +22,7 @@ export function ContactCta() {
               Trainingsgebiet: <Text tone="dark">{siteConfig.contact.area ?? ""}</Text>
             </p>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-              <ButtonLink href="/termine" size="lg" variant="inverse">
+              <ButtonLink href="/anfrage" size="lg" variant="inverse">
                 <CalendarHeart className="size-4" aria-hidden />
                 Termin anfragen
               </ButtonLink>

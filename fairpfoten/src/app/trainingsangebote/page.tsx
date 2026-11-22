@@ -34,7 +34,7 @@ export default function ServicesPage() {
             <PlaceholderNote className="mb-10">
               Die konkreten Angebote (Name, Beschreibung, Zielgruppe, Dauer und – falls gewünscht – Preis) liegen noch
               nicht vor. Sie werden zentral in <code className="font-mono text-xs">src/data/services.ts</code> gepflegt
-              und erscheinen dann automatisch hier, auf der Startseite und in der Terminanfrage.
+              und erscheinen dann automatisch hier, auf der Startseite und im Anfrageformular.
             </PlaceholderNote>
           )}
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">

@@ -1,7 +1,6 @@
-import { availabilityConfig } from "@/config/availability";
+import { inquiryConfig } from "@/config/inquiry";
 import { siteConfig } from "@/config/site";
-import { addMinutes, formatLongDate } from "@/lib/dates";
-import type { BookingRequest, ContactRequest, TrainingService } from "@/types";
+import type { ContactRequest, InquiryQuestion, InquiryRequest, TrainingService } from "@/types";
 
 /**
  * Aufbau der Anfrage-E-Mails.
@@ -10,7 +9,7 @@ import type { BookingRequest, ContactRequest, TrainingService } from "@/types";
  * bzw. des Besuchers. Es gibt KEINE garantierte Übermittlung.
  *
  * Für serverseitigen Versand später: einen Route Handler
- * (z. B. `src/app/api/anfrage/route.ts`) anlegen, der `buildBookingEmail`
+ * (z. B. `src/app/api/anfrage/route.ts`) anlegen, der `buildInquiryEmail`
  * wiederverwendet und die Nachricht über einen Mail-Dienst verschickt.
  */
 export interface EmailDraft {
@@ -19,33 +18,54 @@ export interface EmailDraft {
   body: string;
 }
 
-export function buildBookingEmail(req: BookingRequest, service: TrainingService | undefined): EmailDraft {
-  const end = addMinutes(req.time, availabilityConfig.slotDurationMinutes);
-  const lines = [
-    "Hallo,",
-    "",
-    "ich möchte gerne folgenden Termin unverbindlich anfragen:",
-    "",
-    `Angebot: ${service?.title ?? req.serviceId}`,
-    `Datum: ${formatLongDate(req.date)}`,
-    `Uhrzeit: ${req.time} – ${end} Uhr`,
-    "",
-    `Name: ${req.name}`,
-    `E-Mail: ${req.email}`,
-    req.phone ? `Telefon: ${req.phone}` : null,
-    "",
-    req.message ? `Nachricht:\n${req.message}` : null,
-    req.message ? "" : null,
-    "Mir ist bewusst, dass der Termin erst nach deiner Bestätigung reserviert ist.",
-    "",
-    "Viele Grüße",
-    req.name,
+/** Alle Zusatzfragen für ein Paket: Standardfragen + paketspezifische Fragen. */
+export function getQuestionsFor(service: TrainingService | undefined): InquiryQuestion[] {
+  return [...inquiryConfig.defaultQuestions, ...(service?.inquiryQuestions ?? [])];
+}
+
+const bullet = (label: string, value: string | undefined) => (value?.trim() ? `• ${label}: ${value.trim()}` : null);
+const list = (items: string[]) => (items.length ? items.join(", ") : undefined);
+
+export function buildInquiryEmail(req: InquiryRequest, service: TrainingService | undefined): EmailDraft {
+  const { email: tpl } = inquiryConfig;
+  const title = service?.title ?? "[Paket]";
+  const name = req.name.trim() || "[Dein Name]";
+
+  const timeLines = [
+    bullet("Tage", list(req.weekdays)),
+    bullet("Tageszeit", list(req.dayparts)),
+    bullet("Start", req.start),
+    bullet("Hinweis", req.timeNote),
   ].filter((l): l is string => l !== null);
+
+  const dogLines = getQuestionsFor(service)
+    .map((q) => bullet(q.label, req.answers[q.id]))
+    .filter((l): l is string => l !== null);
+
+  const lines: (string | null)[] = [
+    tpl.greeting,
+    "",
+    tpl.intro(title),
+    "",
+    "Wann ich Zeit habe:",
+    ...(timeLines.length ? timeLines : ["• [noch nicht angegeben]"]),
+    "",
+    ...(dogLines.length ? ["Zu meinem Hund:", ...dogLines, ""] : []),
+    ...(req.message?.trim() ? ["Meine Nachricht:", req.message.trim(), ""] : []),
+    "So erreichst du mich:",
+    `• E-Mail: ${req.email.trim() || "[deine E-Mail-Adresse]"}`,
+    bullet("Telefon", req.phone),
+    "",
+    tpl.closing,
+    "",
+    tpl.signOff,
+    name,
+  ];
 
   return {
     to: siteConfig.contact.email,
-    subject: `Terminanfrage: ${service?.title ?? "Training"} am ${req.date} um ${req.time} Uhr`,
-    body: lines.join("\n"),
+    subject: tpl.subject(title, name),
+    body: lines.filter((l): l is string => l !== null).join("\n"),
   };
 }
 

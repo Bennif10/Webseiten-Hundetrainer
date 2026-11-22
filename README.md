@@ -26,7 +26,7 @@ Details zu jedem Projekt stehen in dessen eigener `README.md`.
    (z. B. `pfotenglueck/`).
 2. Als Startpunkt ein bestehendes Projekt kopieren – **ohne** `node_modules/` und `.next/` –
    oder ein neues Next.js-Projekt im Ordner erstellen.
-3. Kundendaten anpassen: `src/config/site.ts`, `src/data/*`, `src/config/availability.ts`,
+3. Kundendaten anpassen: `src/config/site.ts`, `src/data/*`, `src/config/inquiry.ts`,
    Bilder in `public/images/`, Farben in `src/app/globals.css`.
 4. Fragebogen (`docs/Fragebogen-Hundetrainerin.md`) an den Kunden schicken.
 5. Projekt in die Tabelle oben eintragen und committen.
