@@ -23,12 +23,14 @@ export function getQuestionsFor(service: TrainingService | undefined): InquiryQu
   return [...inquiryConfig.defaultQuestions, ...(service?.inquiryQuestions ?? [])];
 }
 
-const bullet = (label: string, value: string | undefined) => (value?.trim() ? `• ${label}: ${value.trim()}` : null);
+/** "• Label: Wert" – bei Fragen ("…?") ohne Doppelpunkt. */
+const bullet = (label: string, value: string | undefined) =>
+  value?.trim() ? `• ${label}${label.trim().endsWith("?") ? "" : ":"} ${value.trim()}` : null;
 const list = (items: string[]) => (items.length ? items.join(", ") : undefined);
 
 export function buildInquiryEmail(req: InquiryRequest, service: TrainingService | undefined): EmailDraft {
   const { email: tpl } = inquiryConfig;
-  const title = service?.title ?? "[Paket]";
+  const title = service?.title ?? "[Angebot]";
   const name = req.name.trim() || "[Dein Name]";
 
   const timeLines = [
@@ -38,9 +40,10 @@ export function buildInquiryEmail(req: InquiryRequest, service: TrainingService 
     bullet("Hinweis", req.timeNote),
   ].filter((l): l is string => l !== null);
 
-  const dogLines = getQuestionsFor(service)
-    .map((q) => bullet(q.label, req.answers[q.id]))
-    .filter((l): l is string => l !== null);
+  const answerLines = (questions: InquiryQuestion[]) =>
+    questions.map((q) => bullet(q.label, req.answers[q.id])).filter((l): l is string => l !== null);
+  const serviceLines = answerLines(service?.inquiryQuestions ?? []);
+  const dogLines = answerLines(inquiryConfig.defaultQuestions);
 
   const lines: (string | null)[] = [
     tpl.greeting,
@@ -50,6 +53,7 @@ export function buildInquiryEmail(req: InquiryRequest, service: TrainingService 
     "Wann ich Zeit habe:",
     ...(timeLines.length ? timeLines : ["• [noch nicht angegeben]"]),
     "",
+    ...(serviceLines.length ? ["Zum Angebot:", ...serviceLines, ""] : []),
     ...(dogLines.length ? ["Zu meinem Hund:", ...dogLines, ""] : []),
     ...(req.message?.trim() ? ["Meine Nachricht:", req.message.trim(), ""] : []),
     "So erreichst du mich:",

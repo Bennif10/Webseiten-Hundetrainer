@@ -8,8 +8,8 @@ import type { InquiryQuestion } from "@/types";
  * Hier muss nichts regelmäßig gepflegt werden.
  */
 export const inquiryConfig = {
-  /** Wochentage, die zur Auswahl stehen. Tage ohne Training einfach entfernen. */
-  weekdays: ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"],
+  /** Wochentage, die zur Auswahl stehen (Training: Do–So). */
+  weekdays: ["Donnerstag", "Freitag", "Samstag", "Sonntag"],
 
   /** Tageszeiten, die zur Auswahl stehen. */
   dayparts: ["Vormittags", "Mittags", "Nachmittags", "Abends"],
@@ -31,7 +31,7 @@ export const inquiryConfig = {
   /** Textbausteine der E-Mail. */
   email: {
     subject: (serviceTitle: string, name: string) => `Anfrage: ${serviceTitle} – ${name}`,
-    greeting: "Hallo,",
+    greeting: "Hallo Steffi,",
     intro: (serviceTitle: string) =>
       `ich interessiere mich für „${serviceTitle}“ und würde gerne einen Termin mit dir vereinbaren.`,
     closing: "Ich freue mich auf deine Rückmeldung!",

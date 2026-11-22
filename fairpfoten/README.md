@@ -290,15 +290,16 @@ Nur mit Datenschutzkonzept und ggf. Einwilligungsbanner. Aktuell bewusst nicht e
 
 ## Offene Informationen
 
-- Name der Trainerin, Kurzbiografie, ausführliche Vorstellung
-- Qualifikationen, Zertifikate, Erfahrung (inkl. ggf. Erlaubnis nach § 11 TierSchG)
-- Eigene Hunde (Namen, Beschreibungen, Fotos)
-- Konkrete Trainingsangebote (Name, Beschreibung, Zielgruppe, Dauer, ggf. Preise)
-- Trainingstage/-zeiten (um die Auswahl im Anfrageformular ggf. einzuschränken)
-- E-Mail-Adresse, Telefonnummer (optional), Trainingsgebiet/Ort
-- Social-Media-Profile
-- Antworten für die FAQ
-- Echte Kundenstimmen (mit Einverständnis)
-- Impressumsangaben und vollständige Datenschutzerklärung (inkl. Hosting-Anbieter)
-- Hochauflösende Fotos und Logo als SVG
-- Ziel-Domain
+Stand: Fragebogen von Stefanie Rathmer eingearbeitet. Es fehlen noch bzw. sind zu klären:
+
+- **Anschrift** für Impressum und Datenschutzerklärung (gesetzlich vorgeschrieben)
+- **Datum der Erlaubnis nach § 11 TierSchG** – im Fragebogen stehen 15.12.2025 und 15.12.2026
+- **GINT-Preis**: Sind 190 € / 165 € pro Team gemeint?
+- **Social Media**: „steff!srat“ – welche Plattform, vollständiger Link?
+- **Markenname**: Verhältnis Fairpfoten ↔ Hundeteamschule Anita Balser (Namensnutzung ggf. abstimmen)
+- Kurzbeschreibungen von Lernkontrolle, Walk and Talk und Telefonberatung sowie die „Für wen“-Zeilen
+  wurden aus den Angaben abgeleitet – bitte von der Trainerin gegenlesen lassen
+- Dauer der Lernkontrolle
+- Fotos in hoher Auflösung (Startseite, Porträt, Elli, Milla) und Logo als SVG
+- Kundenstimmen (Bereich ist ausgeblendet, solange keine vorliegen)
+- Domain, Hosting-Anbieter, Verbraucherstreitbeilegung, restliche Datenschutz-Platzhalter

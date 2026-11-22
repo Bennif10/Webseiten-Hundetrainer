@@ -4,18 +4,16 @@ import portrait from "../../../public/images/trainerin-portrait.jpg";
 import { ContactCta } from "@/components/sections/ContactCta";
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
-import { PlaceholderNote, Text } from "@/components/ui/Placeholder";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { siteConfig } from "@/config/site";
 import { dogNeeds, guidingQuote } from "@/data/needs";
-import { dogs, qualifications } from "@/data/people";
+import { aboutText, dogs, htsPhilosophy, qualifications } from "@/data/people";
 import { pageMetadata } from "@/lib/metadata";
-import { placeholder } from "@/lib/placeholder";
 
 export const metadata = pageMetadata({
   title: "Über mich",
   description:
-    "Lerne die Hundetrainerin hinter Fairpfoten kennen: Philosophie, Trainingsansatz und die eigenen Hunde – Hundetraining mit Herz und Haltung.",
+    "Lerne Stefanie Rathmer kennen – Hundetrainerin nach der Hundeteamschule Anita Balser in Ebersbach und Umgebung: Philosophie, Qualifikationen und ihre Border Collies Elli und Milla.",
   path: "/ueber-mich",
 });
 
@@ -53,7 +51,7 @@ export default function AboutPage() {
           <div className="relative mx-auto w-full max-w-sm md:sticky md:top-28 md:max-w-none">
             <Image
               src={portrait}
-              alt="Die Hundetrainerin von Fairpfoten lacht und hält ihren schwarz-weißen Hund im Arm"
+              alt="Stefanie Rathmer lacht und hält ihren schwarz-weißen Border Collie im Arm"
               placeholder="blur"
               sizes="(min-width: 768px) 26rem, 90vw"
               className="aspect-[4/5] w-full rounded-t-full rounded-b-4xl object-cover shadow-lift"
@@ -61,20 +59,22 @@ export default function AboutPage() {
           </div>
           <div>
             <h2 id="intro-title" className="text-4xl leading-tight sm:text-5xl">
-              Hallo, ich bin <Text>{siteConfig.trainer.name}</Text>
+              Hallo, ich bin {siteConfig.trainer.firstName}
             </h2>
+            <p className="mt-2 text-sm tracking-[0.18em] text-bark-600 uppercase">
+              {siteConfig.trainer.name} · Hundetrainerin seit 2025
+            </p>
             <div className="mt-6 space-y-5 text-lg leading-relaxed text-ink-muted">
-              <p>
-                <Text>{siteConfig.trainer.shortBio}</Text>
-              </p>
-              <p>
-                <Text>
-                  {placeholder(
-                    "Ausführliche Vorstellung: Werdegang, wie du zum Hundetraining gekommen bist, was dir an der Arbeit mit Mensch und Hund wichtig ist.",
-                  )}
-                </Text>
-              </p>
+              <p>{siteConfig.trainer.shortBio}</p>
+              {aboutText.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
             </div>
+            <blockquote className="mt-8 border-l-2 border-sage-300 pl-5 font-serif text-2xl leading-snug text-sage-700 italic">
+              „Wir sind die Stimme der Hunde.“
+              <br />
+              „Ich will dir gut.“
+            </blockquote>
           </div>
         </Container>
       </section>
@@ -106,8 +106,16 @@ export default function AboutPage() {
           <SectionHeading
             id="approach-title"
             eyebrow="Trainingsansatz"
-            title="Was Hunde für ein gutes Leben brauchen"
-            intro="Das Training baut auf sechs Grundbedürfnissen auf. Sie bilden die Grundlage einer verantwortungsvollen Hundeerziehung."
+            title="Die Stimme der Hunde"
+            intro={
+              <>
+                <p>{htsPhilosophy}</p>
+                <p className="mt-4">
+                  Dabei habe ich immer im Blick, was Hunde für ein gutes Leben brauchen – die sechs Grundbedürfnisse
+                  als Fundament einer verantwortungsvollen Hundeerziehung.
+                </p>
+              </>
+            }
           />
           <ul className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
             {dogNeeds.map(({ id, title, icon: Icon, points }) => (
@@ -139,7 +147,7 @@ export default function AboutPage() {
             {qualifications.map((q) => (
               <li key={q} className="flex gap-3 rounded-2xl bg-cream-50 p-5 shadow-soft">
                 <Sparkles className="mt-1 size-4 shrink-0 text-sage-600" aria-hidden />
-                <Text>{q}</Text>
+                {q}
               </li>
             ))}
           </ul>
@@ -152,16 +160,10 @@ export default function AboutPage() {
           <SectionHeading
             id="dogs-title"
             eyebrow="Meine Hunde"
-            title="Meine wichtigsten Lehrmeister"
+            title="Elli & Milla"
+            intro="Meine Border Collies – und meine wichtigsten Lehrmeisterinnen."
             align="center"
           />
-          {dogs.some((d) => d.isPlaceholder) && (
-            <PlaceholderNote className="mx-auto mt-8 max-w-2xl">
-              Fotos und Beschreibungen der eigenen Hunde folgen. Bilder bitte in{" "}
-              <code className="font-mono text-xs">public/images/</code> ablegen, Texte in{" "}
-              <code className="font-mono text-xs">src/data/people.ts</code> pflegen.
-            </PlaceholderNote>
-          )}
           <ul className="mx-auto mt-12 grid max-w-4xl gap-6 sm:grid-cols-2">
             {dogs.map((dog) => (
               <li key={dog.name} className="reveal overflow-hidden rounded-4xl bg-cream-50 shadow-soft">
@@ -170,12 +172,9 @@ export default function AboutPage() {
                   <span className="sr-only">Foto folgt</span>
                 </div>
                 <div className="p-7">
-                  <h3 className="text-2xl">
-                    <Text>{dog.name}</Text>
-                  </h3>
-                  <p className="mt-3 leading-relaxed text-ink-muted">
-                    <Text>{dog.description}</Text>
-                  </p>
+                  <h3 className="text-3xl">{dog.name}</h3>
+                  {dog.details && <p className="mt-1 text-sm tracking-wide text-bark-600">{dog.details}</p>}
+                  <p className="mt-4 leading-relaxed text-ink-muted">{dog.description}</p>
                 </div>
               </li>
             ))}

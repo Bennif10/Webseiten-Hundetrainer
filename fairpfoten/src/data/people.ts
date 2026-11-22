@@ -1,28 +1,44 @@
-import { placeholder } from "@/lib/placeholder";
 import type { Dog, Testimonial } from "@/types";
 
 /**
  * Kundenstimmen – ausschließlich echte Stimmen mit Einverständnis der Personen eintragen.
- * Solange `isPlaceholder: true` gesetzt ist, wird der Bereich als Platzhalter angezeigt.
+ * Solange die Liste leer ist, wird der Bereich auf der Startseite ausgeblendet.
  */
-export const testimonials: Testimonial[] = [
-  { quote: placeholder("Echte Kundenstimme 1"), author: placeholder("Name / Hund"), isPlaceholder: true },
-  { quote: placeholder("Echte Kundenstimme 2"), author: placeholder("Name / Hund"), isPlaceholder: true },
-  { quote: placeholder("Echte Kundenstimme 3"), author: placeholder("Name / Hund"), isPlaceholder: true },
-];
+export const testimonials: Testimonial[] = [];
 
 /** Die eigenen Hunde der Trainerin. */
 export const dogs: Dog[] = [
   {
-    name: placeholder("Name des Hundes"),
-    description: placeholder("Rasse/Mix, Alter, Charakter – was macht diesen Hund besonders?"),
-    isPlaceholder: true,
+    name: "Elli",
+    details: "Border Collie, 8 Jahre",
+    description:
+      "Elli ist die Ruhe in mir. Die, die zuhört, versteht, fühlt, ohne Worte. Sie liebt klare Strukturen, vertraut nicht sofort, aber wenn, dann mit ganzem Herzen. Sie setzt Grenzen mit Würde, sucht Gerechtigkeit, bleibt fair. Ihre Welt ist leise, tief, durchdacht. Sie ist die, die sozial kompetent kommunizieren kann, weil sie weiß, wo sie steht. Elli setze ich gerne im Hundetraining mit ein.",
+    isPlaceholder: false,
+  },
+  {
+    name: "Milla",
+    details: "Border Collie, 4 Jahre",
+    description:
+      "Milla ist wie das Feuer. Der erste Impuls. Sie liebt alles, jeden, sofort. Ungebremst, echt, herzlich. Manchmal stolpert sie über ihre eigene Begeisterung. Doch Milla hat Antennen, die tiefer gehen als Worte. Sie weiß, was wahr ist. Ihre Freude ist echt, ihre Angst ehrlich, ihr Mut ansteckend.",
+    isPlaceholder: false,
   },
 ];
 
-/** Qualifikationen & Erfahrungen – nur tatsächlich vorhandene eintragen. */
+/** Qualifikationen & Erfahrungen (neueste zuerst). */
 export const qualifications: string[] = [
-  placeholder("Ausbildung / Zertifizierung (z. B. Sachkundenachweis nach § 11 TierSchG)"),
-  placeholder("Weitere Fortbildungen und Schwerpunkte"),
-  placeholder("Erfahrung mit Hunden (Jahre, eigene Hunde, Tätigkeiten)"),
+  "HTS-Trainerin – Hundeteamschule Anita Balser – November 2026",
+  "HTS-Co-Trainerin – Hundeteamschule Anita Balser – Januar 2026",
+  "Erlaubnis nach § 11 Tierschutzgesetz zum Ausbilden von Hunden bzw. zur Anleitung der Ausbildung durch den Halter – Dezember 2025",
+  "Ausbildung zur Hundetrainerin – Ziemer & Falke – abgeschlossen Juli 2025",
+  "Beginn der Ausbildung zur HTS-Trainerin – Hundeteamschule Anita Balser – Dezember 2024",
 ];
+
+/** Ausführliche Vorstellung für „Über mich“. */
+export const aboutText = [
+  "Mich fasziniert am Hundetraining, für jedes Mensch-Hund-Team seinen ganz eigenen Weg zu finden. Denn es gibt kein Patentrezept und keinen Plan A oder B – was für das eine Team stimmig ist, passt für das andere vielleicht noch nicht.",
+  "Meine Stärke ist es, mich auf jedes Team individuell einzulassen, neue Perspektiven zu eröffnen und Mensch und Hund dabei zu unterstützen, gemeinsam zu wachsen und eine echte Beziehungsbasis zu entwickeln, die von gegenseitigem Verständnis, Respekt und Wertschätzung getragen wird.",
+];
+
+/** Philosophie der Hundeteamschule Anita Balser (HTS). */
+export const htsPhilosophy =
+  "Die Philosophie der Hundeteamschule Anita Balser basiert auf dem Aufbau einer stabilen Mensch-Hund-Beziehung durch Kommunikation in der Sprache der Hunde – insbesondere durch Körpersprache. Gelehrt wird das unter der Bezeichnung „Stimme der Hunde“.";

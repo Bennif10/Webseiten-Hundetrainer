@@ -50,13 +50,7 @@ export function ServicePicker({ services, selected, onSelect, error }: ServicePi
                 <span className="block font-medium text-sage-900">
                   <Text>{service.title}</Text>
                 </span>
-                {(service.durationMinutes || service.price) && (
-                  <span className="mt-1 block text-xs text-ink-muted">
-                    {[service.durationMinutes && `${service.durationMinutes} Min.`, service.price]
-                      .filter(Boolean)
-                      .join(" · ")}
-                  </span>
-                )}
+                {service.price && <span className="mt-1 block text-xs text-ink-muted">{service.price}</span>}
               </span>
             </label>
           );

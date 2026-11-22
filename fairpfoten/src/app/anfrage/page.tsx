@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata({
   title: "Training anfragen",
   description:
-    "Training bei Fairpfoten Hundetraining unverbindlich anfragen: Paket wählen, angeben, wann du Zeit hast – und du bekommst einen persönlichen Terminvorschlag.",
+    "Training bei Fairpfoten Hundetraining unverbindlich anfragen: Angebot wählen, angeben, wann du Zeit hast – und du bekommst einen persönlichen Terminvorschlag.",
   path: "/anfrage",
 });
 
@@ -17,7 +17,7 @@ export default function InquiryPage() {
       <PageHero
         eyebrow="Anfrage"
         title="Training anfragen"
-        intro="Wähle ein Paket und sag mir grob, wann du Zeit hast. Daraus entsteht eine fertige E-Mail – ich melde mich dann persönlich mit einem Terminvorschlag."
+        intro="Wähle ein Angebot und sag mir grob, wann du Zeit hast. Daraus entsteht eine fertige E-Mail – ich melde mich dann persönlich mit einem Terminvorschlag."
       />
       <section className="py-12 sm:py-20">
         <Container>

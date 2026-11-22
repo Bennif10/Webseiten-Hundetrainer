@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Text } from "@/components/ui/Placeholder";
 import { legalNav, mainNav, siteConfig } from "@/config/site";
+import { toTelHref } from "@/lib/phone";
 import { Logo } from "./Logo";
 
 export function Footer() {
@@ -43,7 +44,7 @@ export function Footer() {
             {contact.phone && (
               <li className="flex items-start gap-2.5">
                 <Phone className="mt-0.5 size-4 shrink-0 text-sage-300" aria-hidden />
-                <a href={`tel:${contact.phone.replace(/\s/g, "")}`} className="hover:text-cream-50 hover:underline">
+                <a href={toTelHref(contact.phone)} className="hover:text-cream-50 hover:underline">
                   {contact.phone}
                 </a>
               </li>

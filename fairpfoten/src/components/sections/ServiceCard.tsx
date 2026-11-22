@@ -12,11 +12,17 @@ export function ServiceCard({ service, index }: { service: TrainingService; inde
       <h3 className="mt-4 text-2xl leading-snug sm:text-[1.75rem]">
         <Text>{service.title}</Text>
       </h3>
+      {service.price && (
+        <p className="mt-2 font-serif text-xl text-bark-600">
+          <span className="sr-only">Preis: </span>
+          {service.price}
+        </p>
+      )}
       <p className="mt-4 leading-relaxed text-ink-muted">
         <Text>{service.summary}</Text>
       </p>
 
-      <dl className="mt-6 space-y-3 border-t border-sage-900/8 pt-5 text-sm">
+      <dl className="mt-6 space-y-4 border-t border-sage-900/8 pt-5 text-sm">
         <div>
           <dt className="flex items-center gap-2 text-xs font-semibold tracking-wide text-sage-800 uppercase">
             <Users className="size-3.5" aria-hidden />
@@ -26,19 +32,13 @@ export function ServiceCard({ service, index }: { service: TrainingService; inde
             <Text>{service.audience}</Text>
           </dd>
         </div>
-        {service.durationMinutes && (
-          <div className="flex gap-2.5">
-            <dt className="flex items-center gap-2 font-medium text-sage-800">
-              <Clock className="size-4" aria-hidden />
-              <span>Dauer:</span>
+        {service.duration && (
+          <div>
+            <dt className="flex items-center gap-2 text-xs font-semibold tracking-wide text-sage-800 uppercase">
+              <Clock className="size-3.5" aria-hidden />
+              Dauer
             </dt>
-            <dd className="text-ink-muted">{service.durationMinutes} Minuten</dd>
-          </div>
-        )}
-        {service.price && (
-          <div className="flex gap-2.5">
-            <dt className="font-medium text-sage-800">Preis:</dt>
-            <dd className="text-ink-muted">{service.price}</dd>
+            <dd className="mt-1.5 text-ink-muted">{service.duration}</dd>
           </div>
         )}
       </dl>
@@ -47,7 +47,8 @@ export function ServiceCard({ service, index }: { service: TrainingService; inde
         href={`/anfrage?angebot=${encodeURIComponent(service.id)}`}
         className="mt-auto inline-flex items-center gap-2 self-start pt-7 font-medium text-sage-700 transition-colors hover:text-sage-900"
       >
-        Dieses Training anfragen
+        Anfragen
+        <span className="sr-only">: {service.title}</span>
         <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
       </Link>
     </article>

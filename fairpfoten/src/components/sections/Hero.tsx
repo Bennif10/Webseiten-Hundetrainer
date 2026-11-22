@@ -47,7 +47,7 @@ export function Hero() {
           <div className="relative overflow-hidden rounded-5xl shadow-lift">
             <Image
               src={heroImage}
-              alt="Die Hundetrainerin von Fairpfoten drückt lachend ihren schwarz-weißen Hund an sich – im Hintergrund sonniges Grün"
+              alt="Hundetrainerin Stefanie Rathmer drückt lachend ihren Border Collie an sich – im Hintergrund sonniges Grün"
               priority
               placeholder="blur"
               sizes="(min-width: 1024px) 34rem, 100vw"

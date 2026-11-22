@@ -8,6 +8,8 @@ export interface NavItem {
 export interface ContactInfo {
   email: string;
   phone?: string;
+  /** Telefonische Erreichbarkeit, z. B. "Mo–Fr 9–17 Uhr". */
+  phoneHours?: string;
   /** Trainingsgebiet bzw. Ort (z. B. "Raum Musterstadt"). */
   area?: string;
 }
@@ -32,10 +34,12 @@ export interface TrainingService {
   summary: string;
   /** Für wen ist das Angebot gedacht? */
   audience: string;
-  /** Dauer in Minuten, falls bekannt. */
-  durationMinutes?: number;
+  /** Dauer als Anzeige-Text, z. B. "3 Stunden". */
+  duration?: string;
   /** Preis als Anzeige-Text, NUR wenn tatsächlich bekannt. */
   price?: string;
+  /** Auf der Startseite als eines der Hauptangebote zeigen. */
+  featured?: boolean;
   /** Zusätzliche Fragen im Anfrageformular nur für dieses Paket (optional). */
   inquiryQuestions?: InquiryQuestion[];
   /** true = Inhalt ist noch ein Platzhalter und muss ersetzt werden. */
@@ -56,6 +60,8 @@ export interface Testimonial {
 
 export interface Dog {
   name: string;
+  /** z. B. "Border Collie, 8 Jahre" */
+  details?: string;
   description: string;
   isPlaceholder: boolean;
 }

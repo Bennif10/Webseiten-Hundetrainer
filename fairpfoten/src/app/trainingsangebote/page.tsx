@@ -3,8 +3,8 @@ import { ContactCta } from "@/components/sections/ContactCta";
 import { PageHero } from "@/components/sections/PageHero";
 import { ServiceCard } from "@/components/sections/ServiceCard";
 import { Container } from "@/components/ui/Container";
-import { PlaceholderNote } from "@/components/ui/Placeholder";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { siteConfig } from "@/config/site";
 import { dogNeeds } from "@/data/needs";
 import { services } from "@/data/services";
 import { pageMetadata } from "@/lib/metadata";
@@ -12,7 +12,7 @@ import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata({
   title: "Trainingsangebote",
   description:
-    "Die Trainingsangebote von Fairpfoten Hundetraining: individuelles Training, das die Bedürfnisse deines Hundes in den Mittelpunkt stellt.",
+    "Intensivtag, Gruppenintensivtag, Welpenpaket, Walk and Talk und mehr: die Trainingsangebote von Fairpfoten Hundetraining in Ebersbach und Umgebung – mit Preisen.",
   path: "/trainingsangebote",
 });
 
@@ -22,7 +22,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Trainingsangebote"
         title="Training, das den ganzen Hund sieht"
-        intro="Fair, klar und individuell: Jedes Training richtet sich nach der Persönlichkeit, den Fähigkeiten und den Bedürfnissen deines Hundes – und nach dem, was ihr als Team braucht."
+        intro="Es gibt kein Patentrezept: Jedes Training richtet sich nach euch als Mensch-Hund-Team. Wenn du die Arbeit nach der Hundeteamschule Anita Balser noch nicht kennst, starten wir in der Regel mit einem Intensivtag."
       />
 
       <section className="py-20 sm:py-24" aria-labelledby="offers-title">
@@ -30,17 +30,16 @@ export default function ServicesPage() {
           <h2 id="offers-title" className="sr-only">
             Alle Angebote
           </h2>
-          {services.some((s) => s.isPlaceholder) && (
-            <PlaceholderNote className="mb-10">
-              Die konkreten Angebote (Name, Beschreibung, Zielgruppe, Dauer und – falls gewünscht – Preis) liegen noch
-              nicht vor. Sie werden zentral in <code className="font-mono text-xs">src/data/services.ts</code> gepflegt
-              und erscheinen dann automatisch hier, auf der Startseite und im Anfrageformular.
-            </PlaceholderNote>
-          )}
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, i) => (
               <ServiceCard key={service.id} service={service} index={i} />
             ))}
+          </div>
+          <div className="mt-10 space-y-2 rounded-3xl bg-sage-50 p-6 text-sm leading-relaxed text-sage-900">
+            <p>
+              <strong className="font-semibold">Wann?</strong> {siteConfig.trainingTimes}.
+            </p>
+            <p>{siteConfig.pricingNote}</p>
           </div>
         </Container>
       </section>

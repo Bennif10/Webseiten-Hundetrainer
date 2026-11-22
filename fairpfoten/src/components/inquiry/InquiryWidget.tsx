@@ -8,6 +8,7 @@ import { ConsentCheckbox, InputField, TextareaField } from "@/components/forms/F
 import { MailtoNotice } from "@/components/forms/MailtoNotice";
 import { Button } from "@/components/ui/Button";
 import { inquiryConfig } from "@/config/inquiry";
+import { siteConfig } from "@/config/site";
 import { getServiceById, services } from "@/data/services";
 import { buildInquiryEmail, getQuestionsFor, toMailtoUrl, type EmailDraft } from "@/lib/mail";
 import {
@@ -96,7 +97,7 @@ export function InquiryWidget() {
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const next: FieldErrors<Fields> = {
-      service: serviceId ? undefined : "Bitte wähle ein Paket.",
+      service: serviceId ? undefined : "Bitte wähle ein Angebot.",
       time:
         weekdays.length || dayparts.length || timeNote.trim()
           ? undefined
@@ -168,7 +169,7 @@ export function InquiryWidget() {
   return (
     <form noValidate onSubmit={handleSubmit} className="grid gap-8 lg:grid-cols-[1fr_24rem] lg:items-start">
       <div className="min-w-0 space-y-6">
-        <Step number={1} title="Paket wählen" id="step-service">
+        <Step number={1} title="Angebot wählen" id="step-service">
           <ServicePicker
             services={services}
             selected={serviceId}
@@ -183,7 +184,7 @@ export function InquiryWidget() {
         <Step
           number={2}
           title="Wann hast du Zeit?"
-          intro="Eine grobe Angabe reicht – ich schlage dir dann einen passenden Termin vor."
+          intro={`Training findet ${siteConfig.trainingTimes} statt. Eine grobe Angabe reicht – ich schlage dir dann einen passenden Termin vor.`}
           id="step-time"
         >
           <div className="space-y-6">

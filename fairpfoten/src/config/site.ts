@@ -1,12 +1,11 @@
-import { placeholder } from "@/lib/placeholder";
 import type { ContactInfo, NavItem, SocialLink } from "@/types";
 
 const contact: ContactInfo = {
-  /** Empfänger für Termin- und Kontaktanfragen (mailto). */
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "kontakt@fairpfoten.example",
-  /** Telefonnummer, z. B. "+49 123 456789" – leer lassen, falls nicht gewünscht. */
-  phone: undefined,
-  area: placeholder("Trainingsgebiet bzw. Ort"),
+  /** Empfänger für Trainings- und Kontaktanfragen (mailto). */
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "steffi@hundeteamschule.de",
+  phone: "0159 0237 5617",
+  phoneHours: "Mo–Mi 18–20 Uhr · Do–So 9–20 Uhr",
+  area: "Ebersbach und Umgebung, je nach Absprache",
 };
 
 /**
@@ -21,18 +20,25 @@ export const siteConfig = {
   /** Kernbotschaft aus dem Referenzplakat. */
   claim: "Fair. Klar. Individuell.",
   description:
-    "Fairpfoten Hundetraining – mit Herz und Haltung. Training, das die Bedürfnisse deines Hundes in den Mittelpunkt stellt: fair, klar und individuell.",
+    "Fairpfoten Hundetraining in Ebersbach und Umgebung – mit Herz und Haltung. Training nach der Hundeteamschule Anita Balser: fair, klar und individuell für jedes Mensch-Hund-Team.",
   /** Wird für Sitemap, Open Graph und kanonische URLs verwendet. */
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   locale: "de_DE",
 
   trainer: {
-    name: placeholder("Name der Hundetrainerin"),
+    name: "Stefanie Rathmer",
+    firstName: "Steffi",
     /** Kurzbiografie für Startseite und „Über mich“. */
-    shortBio: placeholder(
-      "Kurze persönliche Vorstellung (2–3 Sätze): Wer bist du, seit wann arbeitest du mit Hunden, was treibt dich an?",
-    ),
+    shortBio:
+      "Ich bin Steffi und Trainerin der Hundeteamschule Anita Balser. Unser Credo ist: „Wir sind die Stimme der Hunde“ und „Ich will dir gut“.",
   },
+
+  /** Wann Training grundsätzlich stattfindet. */
+  trainingTimes: "Donnerstag bis Sonntag nach Vereinbarung, zwischen 9 und 20 Uhr",
+
+  /** Hinweis zu allen Preisen. */
+  pricingNote:
+    "Alle Preise zzgl. Fahrtkosten von 0,48 € je km – außer der Treffpunkt ist bei mir. Als Kleinunternehmerin gemäß § 19 UStG weise ich keine Umsatzsteuer aus.",
 
   contact,
 

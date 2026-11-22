@@ -7,6 +7,7 @@ import { PlaceholderNote, Text } from "@/components/ui/Placeholder";
 import { siteConfig } from "@/config/site";
 import { pageMetadata } from "@/lib/metadata";
 import { placeholder } from "@/lib/placeholder";
+import { toTelHref } from "@/lib/phone";
 
 export const metadata = pageMetadata({
   title: "Kontakt",
@@ -52,9 +53,12 @@ export default function ContactPage() {
                   <div>
                     <p className="text-sm text-ink-muted">Telefon</p>
                     {contact.phone ? (
-                      <a href={`tel:${contact.phone.replace(/\s/g, "")}`} className="font-medium text-sage-800 hover:underline">
-                        {contact.phone}
-                      </a>
+                      <>
+                        <a href={toTelHref(contact.phone)} className="font-medium text-sage-800 hover:underline">
+                          {contact.phone}
+                        </a>
+                        {contact.phoneHours && <p className="mt-0.5 text-sm text-ink-muted">{contact.phoneHours}</p>}
+                      </>
                     ) : (
                       <Text>{placeholder("Telefonnummer, falls gewünscht")}</Text>
                     )}
@@ -100,7 +104,7 @@ export default function ContactPage() {
             <div className="rounded-4xl bg-sage-700 p-7 text-cream-50">
               <h3 className="text-2xl text-cream-50">Lieber direkt ein Training anfragen?</h3>
               <p className="mt-2 text-sm leading-relaxed text-sage-100">
-                Wähle ein Paket, gib an, wann du Zeit hast – und schick mir eine fertige Anfrage.
+                Wähle ein Angebot, gib an, wann du Zeit hast – und schick mir eine fertige Anfrage.
               </p>
               <ButtonLink href="/anfrage" variant="inverse" className="mt-5">
                 <CalendarHeart className="size-4" aria-hidden />

@@ -18,8 +18,13 @@ export default function PrivacyPage() {
     <LegalPage title="Datenschutzerklärung">
       <h2>1. Verantwortliche Stelle</h2>
       <p>
-        [Platzhalter: Name, Anschrift, E-Mail-Adresse und ggf. Telefonnummer der verantwortlichen Person im Sinne der
-        DSGVO]
+        Stefanie Rathmer
+        <br />
+        [Platzhalter: Straße und Hausnummer, PLZ und Ort]
+        <br />
+        Telefon: 0159 0237 5617
+        <br />
+        E-Mail: steffi@hundeteamschule.de
       </p>
 
       <h2>2. Hosting und Server-Logfiles</h2>
@@ -67,7 +72,7 @@ export default function PrivacyPage() {
         <li>Widerspruch (Art. 21 DSGVO)</li>
         <li>Beschwerde bei einer Datenschutz-Aufsichtsbehörde (Art. 77 DSGVO)</li>
       </ul>
-      <p>[Platzhalter: zuständige Aufsichtsbehörde]</p>
+      <p>Zuständige Aufsichtsbehörde: Der Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg.</p>
 
       <h2>8. Stand</h2>
       <p>[Platzhalter: Datum der letzten Aktualisierung]</p>

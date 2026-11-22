@@ -34,7 +34,7 @@ export const metadata: Metadata = {
         url: "/images/trainerin-mit-hund.jpg",
         width: 615,
         height: 436,
-        alt: "Die Hundetrainerin von Fairpfoten umarmt lachend ihren schwarz-weißen Hund",
+        alt: "Stefanie Rathmer von Fairpfoten umarmt lachend ihren Border Collie",
       },
     ],
   },
