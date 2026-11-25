@@ -29,7 +29,7 @@ export const siteConfig = {
   description:
     "Fairpfoten Hundetraining in Ebersbach und Umgebung – mit Herz und Haltung. Training nach der Hundeteamschule Anita Balser: fair, klar und individuell für jedes Mensch-Hund-Team.",
   /** Wird für Sitemap, Open Graph und kanonische URLs verwendet. */
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.fairpfoten.online",
   locale: "de_DE",
 
   trainer: {

@@ -8,7 +8,7 @@ mit eigener `package.json`, eigener README und eigenen Abhängigkeiten.
 
 | Ordner                         | Kunde                              | Status                                  |
 | ------------------------------ | ---------------------------------- | --------------------------------------- |
-| [`fairpfoten/`](./fairpfoten)  | Fairpfoten Hundetraining           | Version 1 fertig – Inhalte (Platzhalter) ausstehend |
+| [`fairpfoten/`](./fairpfoten)  | Fairpfoten Hundetraining           | Live über GitHub Pages: https://www.fairpfoten.online |
 
 ## Ein Projekt lokal starten
 
@@ -30,6 +30,13 @@ Details zu jedem Projekt stehen in dessen eigener `README.md`.
    Bilder in `public/images/`, Farben in `src/app/globals.css`.
 4. Fragebogen (`docs/Fragebogen-Hundetrainerin.md`) an den Kunden schicken.
 5. Projekt in die Tabelle oben eintragen und committen.
+
+## Hosting
+
+Dieses Repository veröffentlicht **Fairpfoten** über GitHub Pages
+(Workflow `.github/workflows/deploy-fairpfoten.yml`). GitHub Pages erlaubt nur **eine** Website pro
+Repository – für weitere Kunden entweder ein eigenes Repository je Kunde anlegen oder einen Hoster
+wie Netlify oder Cloudflare Pages nutzen, der mehrere Projekte aus einem Repository bauen kann.
 
 ## Regeln
 

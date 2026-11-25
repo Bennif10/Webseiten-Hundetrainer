@@ -34,8 +34,8 @@ Danach im Browser <http://localhost:3000> öffnen.
 | Befehl              | Zweck                                         |
 | ------------------- | --------------------------------------------- |
 | `npm run dev`       | Entwicklungsserver mit Hot Reload             |
-| `npm run build`     | Produktions-Build erstellen                   |
-| `npm run start`     | Produktions-Build lokal starten               |
+| `npm run build`     | Statische Seite in `out/` erzeugen            |
+| `npm run preview`   | `out/` lokal anzeigen (benötigt Python)       |
 | `npm run lint`      | ESLint                                        |
 | `npm run typecheck` | TypeScript-Prüfung                            |
 | `npm run check`     | Typecheck + Lint + Build in einem Durchgang   |
@@ -43,7 +43,7 @@ Danach im Browser <http://localhost:3000> öffnen.
 > **Hinweis OneDrive:** Das Projekt liegt in einem OneDrive-Ordner. `node_modules` und `.next`
 > enthalten zehntausende Dateien. Solange OneDrive diese synchronisiert, kann `npm run dev` hängen
 > (die Seite lädt, reagiert aber nicht auf Eingaben). Abhilfe: diese Ordner von der Synchronisierung
-> ausschließen, das Projekt außerhalb von OneDrive ablegen oder mit `npm run build && npm run start` testen.
+> ausschließen, das Projekt außerhalb von OneDrive ablegen oder mit `npm run build` und `npm run preview` testen.
 
 ## Umgebungsvariablen
 
@@ -54,7 +54,7 @@ Danach im Browser <http://localhost:3000> öffnen.
 | `NEXT_PUBLIC_SITE_URL`      | Öffentliche Domain (Sitemap, Open Graph, kanonische Links)            |
 | `NEXT_PUBLIC_CONTACT_EMAIL` | Empfängeradresse für Trainings- und Kontaktanfragen                      |
 
-Ohne `.env.local` gelten `http://localhost:3000` und die Platzhalter-Adresse `kontakt@fairpfoten.example`.
+Ohne `.env.local` gelten `https://www.fairpfoten.online` und `steffi@hundeteamschule.de` (siehe `src/config/site.ts`).
 
 ---
 
@@ -225,6 +225,37 @@ Original-Logo als SVG vor, kann es dort eingesetzt werden.
 
 ---
 
+## Veröffentlichung (GitHub Pages)
+
+Die Website wird als **statische Seite** exportiert (`output: "export"` in `next.config.ts`) und über
+**GitHub Pages** unter **https://www.fairpfoten.online** veröffentlicht.
+
+- **Automatisch:** Jeder Push auf `main`, der etwas in `fairpfoten/` ändert, startet den Workflow
+  `.github/workflows/deploy-fairpfoten.yml` (ESLint → Build → Veröffentlichung). Fortschritt und Fehler
+  siehst du im Repository unter **Actions**. Manuell starten: Actions → „Deploy Fairpfoten“ → „Run workflow“.
+- **Domain:** `public/CNAME` enthält `www.fairpfoten.online`. `public/.nojekyll` verhindert, dass GitHub
+  den Ordner `_next/` ignoriert.
+- **Einschränkungen des statischen Exports:** keine serverseitige Bildoptimierung (Bilder vorab
+  verkleinern, ca. 1600–2400 px lange Kante), keine eigenen HTTP-Header, keine API-Routen. Für einen
+  serverseitigen E-Mail-Versand wäre später ein anderer Hoster oder ein externer Formular-Dienst nötig.
+- **Eine Pages-Seite pro Repository:** GitHub Pages erlaubt nur eine Website je Repository. Weitere
+  Kundenprojekte brauchen ein eigenes Repository oder einen Hoster, der mehrere Projekte aus einem
+  Repository unterstützt.
+
+### DNS-Einstellungen beim Domain-Anbieter
+
+| Typ   | Name / Host | Wert                    |
+| ----- | ----------- | ----------------------- |
+| CNAME | `www`       | `bennif10.github.io`    |
+| A     | `@`         | `185.199.108.153`       |
+| A     | `@`         | `185.199.109.153`       |
+| A     | `@`         | `185.199.110.153`       |
+| A     | `@`         | `185.199.111.153`       |
+
+Die A-Einträge sorgen dafür, dass auch `fairpfoten.online` (ohne www) auf die Seite weiterleitet.
+
+---
+
 ## Designsystem
 
 Definiert in `src/app/globals.css` (Tailwind `@theme`):
@@ -302,4 +333,4 @@ Stand: Fragebogen von Stefanie Rathmer eingearbeitet. Es fehlen noch bzw. sind z
 - Dauer der Lernkontrolle
 - Fotos in hoher Auflösung (Startseite, Porträt) und Logo als SVG
 - Kundenstimmen (Bereich ist ausgeblendet, solange keine vorliegen)
-- Domain, Hosting-Anbieter (inkl. Auftragsverarbeitungsvertrag), restliche Datenschutz-Platzhalter
+- Datenschutzerklärung und Impressum vor dem Livegang rechtlich prüfen lassen (z. B. Generator oder Anwalt)

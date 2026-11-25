@@ -3,7 +3,7 @@ import { ContactForm } from "@/components/forms/ContactForm";
 import { PageHero } from "@/components/sections/PageHero";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { PlaceholderNote, Text } from "@/components/ui/Placeholder";
+import { Text } from "@/components/ui/Placeholder";
 import { siteConfig } from "@/config/site";
 import { pageMetadata } from "@/lib/metadata";
 import { placeholder } from "@/lib/placeholder";
@@ -76,7 +76,7 @@ export default function ContactPage() {
               </ul>
             </div>
 
-            {social.length > 0 ? (
+            {social.length > 0 && (
               <div>
                 <h3 className="text-xl">Social Media</h3>
                 <ul className="mt-3 flex flex-wrap gap-3">
@@ -94,11 +94,6 @@ export default function ContactPage() {
                   ))}
                 </ul>
               </div>
-            ) : (
-              <PlaceholderNote>
-                Social-Media-Profile können in <code className="font-mono text-xs">src/config/site.ts</code> unter{" "}
-                <code className="font-mono text-xs">social</code> ergänzt werden.
-              </PlaceholderNote>
             )}
 
             <div className="rounded-4xl bg-sage-700 p-7 text-cream-50">

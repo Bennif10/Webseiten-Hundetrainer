@@ -1,0 +1,70 @@
+# Baut die Fairpfoten-Website (Ordner fairpfoten/) als statische Seite
+# und veröffentlicht sie über GitHub Pages unter https://www.fairpfoten.online
+#
+# Läuft automatisch bei jedem Push auf main, der Dateien in fairpfoten/ ändert,
+# und lässt sich unter „Actions“ auch manuell starten.
+#
+# Hinweis: Ein GitHub-Repository kann nur EINE Pages-Website haben.
+# Weitere Kundenprojekte brauchen ein eigenes Repository oder einen anderen Hoster.
+
+name: Deploy Fairpfoten
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "fairpfoten/**"
+      - ".github/workflows/deploy-fairpfoten.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Nur ein Deployment gleichzeitig; ein laufendes wird nicht abgebrochen.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: fairpfoten
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: fairpfoten/package-lock.json
+
+      - name: Abhängigkeiten installieren
+        run: npm ci
+
+      - name: Codequalität prüfen (ESLint)
+        run: npm run lint
+
+      # next build prüft dabei auch alle TypeScript-Typen
+      - name: Statische Seite bauen
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: https://www.fairpfoten.online
+          NEXT_TELEMETRY_DISABLED: "1"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: fairpfoten/out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
