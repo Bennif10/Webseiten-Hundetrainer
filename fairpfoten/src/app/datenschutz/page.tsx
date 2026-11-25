@@ -1,4 +1,5 @@
 import { LegalPage } from "@/components/sections/LegalPage";
+import { siteConfig } from "@/config/site";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
@@ -14,17 +15,21 @@ export const metadata = pageMetadata({
  * Alles in eckigen Klammern muss ergänzt und rechtlich geprüft werden.
  */
 export default function PrivacyPage() {
+  const { trainer, contact, address } = siteConfig;
+
   return (
     <LegalPage title="Datenschutzerklärung">
       <h2>1. Verantwortliche Stelle</h2>
       <p>
-        Stefanie Rathmer
+        {trainer.name}
         <br />
-        [Platzhalter: Straße und Hausnummer, PLZ und Ort]
+        {address.street}
         <br />
-        Telefon: 0159 0237 5617
+        {address.postalCode} {address.city}
         <br />
-        E-Mail: steffi@hundeteamschule.de
+        Telefon: {contact.phone}
+        <br />
+        E-Mail: {contact.email}
       </p>
 
       <h2>2. Hosting und Server-Logfiles</h2>

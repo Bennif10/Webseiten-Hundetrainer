@@ -36,7 +36,7 @@ export const dogs: Dog[] = [
 export const qualifications: string[] = [
   "HTS-Trainerin – Hundeteamschule Anita Balser – November 2026",
   "HTS-Co-Trainerin – Hundeteamschule Anita Balser – Januar 2026",
-  "Erlaubnis nach § 11 Tierschutzgesetz zum Ausbilden von Hunden bzw. zur Anleitung der Ausbildung durch den Halter – Dezember 2025",
+  "Erlaubnis nach § 11 Tierschutzgesetz zum Ausbilden von Hunden bzw. zur Anleitung der Ausbildung durch den Halter",
   "Ausbildung zur Hundetrainerin – Ziemer & Falke – abgeschlossen Juli 2025",
   "Beginn der Ausbildung zur HTS-Trainerin – Hundeteamschule Anita Balser – Dezember 2024",
 ];

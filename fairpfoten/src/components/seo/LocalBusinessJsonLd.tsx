@@ -6,11 +6,9 @@ import { isPlaceholder } from "@/lib/placeholder";
  * Es werden nur Angaben ausgegeben, die tatsächlich bekannt sind –
  * Platzhalter werden automatisch weggelassen.
  *
- * Sobald Adresse/Ort bekannt sind, hier `address` (PostalAddress) und
- * ggf. `areaServed`/`geo` ergänzen.
  */
 export function LocalBusinessJsonLd() {
-  const { contact } = siteConfig;
+  const { contact, address } = siteConfig;
   const data: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -19,6 +17,14 @@ export function LocalBusinessJsonLd() {
     description: siteConfig.description,
     url: siteConfig.url,
     image: `${siteConfig.url}/images/trainerin-mit-hund.jpg`,
+    founder: { "@type": "Person", name: siteConfig.trainer.name },
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: address.street,
+      postalCode: address.postalCode,
+      addressLocality: address.city,
+      addressCountry: "DE",
+    },
   };
   if (!isContactEmailPlaceholder) data.email = contact.email;
   if (contact.phone) data.telephone = contact.phone;

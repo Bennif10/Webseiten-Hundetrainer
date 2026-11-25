@@ -294,8 +294,6 @@ Nur mit Datenschutzkonzept und ggf. Einwilligungsbanner. Aktuell bewusst nicht e
 
 Stand: Fragebogen von Stefanie Rathmer eingearbeitet. Es fehlen noch bzw. sind zu klären:
 
-- **Anschrift** für Impressum und Datenschutzerklärung (gesetzlich vorgeschrieben)
-- **Datum der Erlaubnis nach § 11 TierSchG** – im Fragebogen stehen 15.12.2025 und 15.12.2026
 - **GINT-Preis**: Sind 190 € / 165 € pro Team gemeint?
 - **Social Media**: „steff!srat“ – welche Plattform, vollständiger Link?
 - **Markenname**: Verhältnis Fairpfoten ↔ Hundeteamschule Anita Balser (Namensnutzung ggf. abstimmen)
@@ -304,4 +302,4 @@ Stand: Fragebogen von Stefanie Rathmer eingearbeitet. Es fehlen noch bzw. sind z
 - Dauer der Lernkontrolle
 - Fotos in hoher Auflösung (Startseite, Porträt) und Logo als SVG
 - Kundenstimmen (Bereich ist ausgeblendet, solange keine vorliegen)
-- Domain, Hosting-Anbieter, Verbraucherstreitbeilegung, restliche Datenschutz-Platzhalter
+- Domain, Hosting-Anbieter (inkl. Auftragsverarbeitungsvertrag), restliche Datenschutz-Platzhalter

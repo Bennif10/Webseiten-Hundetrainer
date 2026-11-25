@@ -15,6 +15,12 @@ export interface ContactInfo {
   area?: string;
 }
 
+export interface PostalAddress {
+  street: string;
+  postalCode: string;
+  city: string;
+}
+
 export interface SocialLink {
   label: string;
   href: string;

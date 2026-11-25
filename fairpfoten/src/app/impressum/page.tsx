@@ -9,7 +9,7 @@ export const metadata = pageMetadata({
 });
 
 export default function ImprintPage() {
-  const { trainer, contact } = siteConfig;
+  const { trainer, contact, address } = siteConfig;
 
   return (
     <LegalPage title="Impressum">
@@ -19,9 +19,9 @@ export default function ImprintPage() {
         <br />
         Fairpfoten Hundetraining
         <br />
-        [Platzhalter: Straße und Hausnummer]
+        {address.street}
         <br />
-        [Platzhalter: PLZ und Ort]
+        {address.postalCode} {address.city}
       </p>
 
       <h2>Kontakt</h2>
@@ -37,8 +37,7 @@ export default function ImprintPage() {
       <h2>Berufsbezogene Angaben</h2>
       <p>
         Erlaubnis nach § 11 Abs. 1 Satz 1 Nr. 8 Buchstabe f Tierschutzgesetz (gewerbsmäßiges Ausbilden von Hunden bzw.
-        Anleitung der Ausbildung durch den Tierhalter), erteilt am [Platzhalter: 15.12.2025 oder 15.12.2026 – bitte
-        prüfen].
+        Anleitung der Ausbildung durch den Tierhalter) liegt vor.
         <br />
         Zuständige Behörde: Veterinäramt Göppingen
       </p>
@@ -46,12 +45,6 @@ export default function ImprintPage() {
       <h2>Verantwortlich für den Inhalt</h2>
       <p>
         {trainer.name}, Anschrift wie oben
-      </p>
-
-      <h2>Verbraucherstreitbeilegung</h2>
-      <p>
-        [Platzhalter: Angabe, ob Bereitschaft oder Verpflichtung zur Teilnahme an einem Streitbeilegungsverfahren vor einer
-        Verbraucherschlichtungsstelle besteht]
       </p>
 
       <h2>Bildnachweise</h2>

@@ -1,4 +1,4 @@
-import type { ContactInfo, NavItem, SocialLink } from "@/types";
+import type { ContactInfo, NavItem, PostalAddress, SocialLink } from "@/types";
 
 const contact: ContactInfo = {
   /** Empfänger für Trainings- und Kontaktanfragen (mailto). */
@@ -6,6 +6,13 @@ const contact: ContactInfo = {
   phone: "0159 0237 5617",
   phoneHours: "Mo–Mi 18–20 Uhr · Do–So 9–20 Uhr",
   area: "Ebersbach und Umgebung, je nach Absprache",
+};
+
+/** Ladungsfähige Anschrift (Impressum, Datenschutz, Suchmaschinen-Daten). */
+const address: PostalAddress = {
+  street: "Zeppelinstraße 30",
+  postalCode: "73061",
+  city: "Ebersbach an der Fils",
 };
 
 /**
@@ -41,6 +48,7 @@ export const siteConfig = {
     "Alle Preise zzgl. Fahrtkosten von 0,48 € je km – außer der Treffpunkt ist bei mir. Als Kleinunternehmerin gemäß § 19 UStG weise ich keine Umsatzsteuer aus.",
 
   contact,
+  address,
 
   /** Social-Media-Profile – leer lassen, solange keine vorhanden sind. */
   social: [] as SocialLink[],
