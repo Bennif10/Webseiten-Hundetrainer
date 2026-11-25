@@ -166,11 +166,22 @@ export default function AboutPage() {
           />
           <ul className="mx-auto mt-12 grid max-w-4xl gap-6 sm:grid-cols-2">
             {dogs.map((dog) => (
-              <li key={dog.name} className="reveal overflow-hidden rounded-4xl bg-cream-50 shadow-soft">
-                <div className="grid aspect-[4/3] place-items-center bg-sage-100 text-sage-400">
-                  <DogIcon className="size-14" strokeWidth={1} aria-hidden />
-                  <span className="sr-only">Foto folgt</span>
-                </div>
+              <li key={dog.name} className="reveal group overflow-hidden rounded-4xl bg-cream-50 shadow-soft">
+                {dog.image ? (
+                  <Image
+                    src={dog.image}
+                    alt={dog.imageAlt ?? dog.name}
+                    placeholder="blur"
+                    sizes="(min-width: 640px) 28rem, 100vw"
+                    className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    style={{ objectPosition: dog.imagePosition }}
+                  />
+                ) : (
+                  <div className="grid aspect-[4/5] place-items-center bg-sage-100 text-sage-400">
+                    <DogIcon className="size-14" strokeWidth={1} aria-hidden />
+                    <span className="sr-only">Foto folgt</span>
+                  </div>
+                )}
                 <div className="p-7">
                   <h3 className="text-3xl">{dog.name}</h3>
                   {dog.details && <p className="mt-1 text-sm tracking-wide text-bark-600">{dog.details}</p>}

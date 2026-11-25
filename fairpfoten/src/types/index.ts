@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+import type { StaticImageData } from "next/image";
 
 export interface NavItem {
   label: string;
@@ -62,6 +63,11 @@ export interface Dog {
   name: string;
   /** z. B. "Border Collie, 8 Jahre" */
   details?: string;
+  /** Foto (statischer Import aus public/images) und Bildbeschreibung. */
+  image?: StaticImageData;
+  imageAlt?: string;
+  /** Bildausschnitt, z. B. "50% 30%" (Standard: Mitte). */
+  imagePosition?: string;
   description: string;
   isPlaceholder: boolean;
 }

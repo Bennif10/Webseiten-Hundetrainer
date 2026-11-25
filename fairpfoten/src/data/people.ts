@@ -1,3 +1,5 @@
+import elliImage from "../../public/images/hund-elli.jpg";
+import millaImage from "../../public/images/hund-milla.jpg";
 import type { Dog, Testimonial } from "@/types";
 
 /**
@@ -11,6 +13,9 @@ export const dogs: Dog[] = [
   {
     name: "Elli",
     details: "Border Collie, 8 Jahre",
+    image: elliImage,
+    imageAlt: "Elli, eine schwarz-weiße Border-Collie-Hündin, liegt im hohen Gras und schaut freundlich zur Seite",
+    imagePosition: "50% 30%",
     description:
       "Elli ist die Ruhe in mir. Die, die zuhört, versteht, fühlt, ohne Worte. Sie liebt klare Strukturen, vertraut nicht sofort, aber wenn, dann mit ganzem Herzen. Sie setzt Grenzen mit Würde, sucht Gerechtigkeit, bleibt fair. Ihre Welt ist leise, tief, durchdacht. Sie ist die, die sozial kompetent kommunizieren kann, weil sie weiß, wo sie steht. Elli setze ich gerne im Hundetraining mit ein.",
     isPlaceholder: false,
@@ -18,6 +23,9 @@ export const dogs: Dog[] = [
   {
     name: "Milla",
     details: "Border Collie, 4 Jahre",
+    image: millaImage,
+    imageAlt: "Milla, eine schwarz-weiße Border-Collie-Hündin, sitzt auf Kunstrasen und schaut fröhlich nach oben in die Kamera",
+    imagePosition: "50% 40%",
     description:
       "Milla ist wie das Feuer. Der erste Impuls. Sie liebt alles, jeden, sofort. Ungebremst, echt, herzlich. Manchmal stolpert sie über ihre eigene Begeisterung. Doch Milla hat Antennen, die tiefer gehen als Worte. Sie weiß, was wahr ist. Ihre Freude ist echt, ihre Angst ehrlich, ihr Mut ansteckend.",
     isPlaceholder: false,

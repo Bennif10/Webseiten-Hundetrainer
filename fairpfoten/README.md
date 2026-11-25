@@ -209,6 +209,8 @@ Bilder liegen in `public/images/`:
 | ------------------------- | ---------------------------------- | --------------- |
 | `trainerin-mit-hund.jpg`  | Hero Startseite, Open-Graph-Bild   | quer, ca. 4:3   |
 | `trainerin-portrait.jpg`  | Über-mich-Teaser und -Seite        | hoch, ca. 4:5   |
+| `hund-elli.jpg`           | Über mich → Elli                   | hoch, ca. 4:5   |
+| `hund-milla.jpg`          | Über mich → Milla                  | hoch, ca. 4:5   |
 
 Die aktuellen Bilder wurden aus dem Referenzplakat ausgeschnitten und haben daher nur eine geringe
 Auflösung (~600 px). **Für den Livegang bitte Originalfotos in hoher Auflösung verwenden** (mind. 1600 px
@@ -300,6 +302,6 @@ Stand: Fragebogen von Stefanie Rathmer eingearbeitet. Es fehlen noch bzw. sind z
 - Kurzbeschreibungen von Lernkontrolle, Walk and Talk und Telefonberatung sowie die „Für wen“-Zeilen
   wurden aus den Angaben abgeleitet – bitte von der Trainerin gegenlesen lassen
 - Dauer der Lernkontrolle
-- Fotos in hoher Auflösung (Startseite, Porträt, Elli, Milla) und Logo als SVG
+- Fotos in hoher Auflösung (Startseite, Porträt) und Logo als SVG
 - Kundenstimmen (Bereich ist ausgeblendet, solange keine vorliegen)
 - Domain, Hosting-Anbieter, Verbraucherstreitbeilegung, restliche Datenschutz-Platzhalter
