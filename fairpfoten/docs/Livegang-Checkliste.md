@@ -15,8 +15,12 @@ Impressum, Datenschutzerklärung). Diese Schritte musst du selbst erledigen – 
 4. Wenn er grün ist, ist die Seite vorläufig unter einer GitHub-Adresse erreichbar
    (steht beim Workflow unter „deploy“).
 
-> Das Repository muss **öffentlich** sein. GitHub Pages für private Repositories gibt es nur mit einem
-> kostenpflichtigen GitHub-Plan.
+> ⚠️ **Dein Repository ist aktuell privat.** GitHub Pages für private Repositories gibt es nur mit einem
+> kostenpflichtigen Plan (GitHub Pro, ca. 4 $/Monat). Mit dem kostenlosen Plan musst du das Repository
+> vorher öffentlich machen: Settings → General → ganz unten „Danger Zone“ → **Change visibility** → Public.
+> Dann ist der komplette Code für alle sichtbar – inklusive Fragebogen und Referenzplakat in
+> `fairpfoten/docs/`. Personenbezogen steht darin nur, was ohnehin auf der Website erscheint;
+> trotzdem vorher kurz durchsehen.
 
 ## 2. Domain bestätigen (Schutz vor Missbrauch, 5 Minuten + Wartezeit)
 
