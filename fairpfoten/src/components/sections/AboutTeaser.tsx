@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import portrait from "../../../public/images/trainerin-portrait.jpg";
+import portrait from "../../../public/images/trainerin-mit-elli-und-milla.jpg";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/config/site";
@@ -14,10 +14,10 @@ export function AboutTeaser() {
           <div aria-hidden className="absolute -inset-3 rounded-t-full rounded-b-4xl border border-sage-300/70" />
           <Image
             src={portrait}
-            alt="Portrait von Stefanie Rathmer, lachend mit ihrem Border Collie im Arm"
+            alt="Stefanie Rathmer steht lachend auf einer Sommerwiese, neben ihr sitzen ihre Border Collies Elli und Milla"
             placeholder="blur"
             sizes="(min-width: 768px) 26rem, 90vw"
-            className="relative aspect-[4/5] w-full rounded-t-full rounded-b-4xl object-cover shadow-lift"
+            className="relative aspect-[3/4] w-full rounded-t-full rounded-b-4xl object-cover shadow-lift"
           />
         </div>
 

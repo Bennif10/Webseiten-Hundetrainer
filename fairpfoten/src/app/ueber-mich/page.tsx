@@ -1,6 +1,6 @@
 import { Award, Dog as DogIcon, Sparkles } from "lucide-react";
 import Image from "next/image";
-import portrait from "../../../public/images/trainerin-portrait.jpg";
+import portrait from "../../../public/images/trainerin-mit-elli-und-milla.jpg";
 import { ContactCta } from "@/components/sections/ContactCta";
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
@@ -51,10 +51,10 @@ export default function AboutPage() {
           <div className="relative mx-auto w-full max-w-sm md:sticky md:top-28 md:max-w-none">
             <Image
               src={portrait}
-              alt="Stefanie Rathmer lacht und hält ihren schwarz-weißen Border Collie im Arm"
+              alt="Stefanie Rathmer steht lachend auf einer Sommerwiese, neben ihr sitzen ihre Border Collies Elli und Milla"
               placeholder="blur"
               sizes="(min-width: 768px) 26rem, 90vw"
-              className="aspect-[4/5] w-full rounded-t-full rounded-b-4xl object-cover shadow-lift"
+              className="aspect-[3/4] w-full rounded-t-full rounded-b-4xl object-cover shadow-lift"
             />
           </div>
           <div>

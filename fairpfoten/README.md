@@ -208,7 +208,8 @@ Bilder liegen in `public/images/`:
 | Datei                     | Verwendung                         | Format          |
 | ------------------------- | ---------------------------------- | --------------- |
 | `trainerin-mit-hund.jpg`  | Hero Startseite, Open-Graph-Bild   | quer, ca. 4:3   |
-| `trainerin-portrait.jpg`  | Über-mich-Teaser und -Seite        | hoch, ca. 4:5   |
+| `trainerin-mit-elli-und-milla.jpg` | Über-mich-Teaser und -Seite | hoch, ca. 3:4 |
+| `logo.jpg`                | Logo in Kopf- und Fußzeile (320 px) | quadratisch    |
 | `hund-elli.jpg`           | Über mich → Elli                   | hoch, ca. 4:5   |
 | `hund-milla.jpg`          | Über mich → Milla                  | hoch, ca. 4:5   |
 
@@ -220,8 +221,8 @@ Varianten in passenden Größen.
 Neue Bilder einbinden: Datei in `public/images/` ablegen, per `import bild from "…/public/images/datei.jpg"`
 importieren und mit `<Image src={bild} alt="Aussagekräftige Beschreibung" />` aus `next/image` verwenden.
 
-Logo: Aktuell wird eine Wortmarke in Schrift gesetzt (`src/components/layout/Logo.tsx`). Liegt das
-Original-Logo als SVG vor, kann es dort eingesetzt werden.
+Logo: Die Zeichnung von Elli und Milla (`public/images/logo.jpg`) erscheint rund neben der Wortmarke
+„Fairpfoten“ (`src/components/layout/Logo.tsx`).
 
 ---
 
