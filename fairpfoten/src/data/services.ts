@@ -21,6 +21,7 @@ export const services: TrainingService[] = [
     audience: "Für Mensch-Hund-Teams, die die Arbeit nach HTS noch nicht kennen.",
     duration: "3 Stunden",
     price: "250 €",
+    sortPrice: 250,
     featured: true,
     isPlaceholder: false,
   },
@@ -32,6 +33,7 @@ export const services: TrainingService[] = [
     audience: "Ab 2 Mensch-Hund-Teams, die die Arbeit nach HTS noch nicht kennen.",
     duration: "4 Stunden",
     price: "190 € bei 2 Teams · 165 € bei 3 Teams",
+    sortPrice: 165,
     featured: true,
     inquiryQuestions: [{ id: "anzahl-teams", label: "Mit wie vielen Teams kommt ihr?", placeholder: "z. B. 2" }],
     isPlaceholder: false,
@@ -44,6 +46,7 @@ export const services: TrainingService[] = [
     audience: "Für Welpen und ihre Menschen.",
     duration: "klein: 4 Stunden · groß: 6 Stunden",
     price: "klein: 320 € · groß: 440 €",
+    sortPrice: 320,
     featured: true,
     inquiryQuestions: [
       { id: "welpenpaket-groesse", label: "Kleines oder großes Paket?", placeholder: "klein (4 Std.) / groß (6 Std.)" },
@@ -56,6 +59,7 @@ export const services: TrainingService[] = [
     summary: "Der Folgetermin nach einem Intensivtag oder Gruppenintensivtag.",
     audience: "Für Teams, die bereits an einem INT, GINT o. Ä. teilgenommen haben.",
     price: "80 €",
+    sortPrice: 80,
     inquiryQuestions: [{ id: "letzter-termin", label: "Wann war dein INT / GINT?", placeholder: "z. B. März 2026" }],
     isPlaceholder: false,
   },
@@ -65,6 +69,7 @@ export const services: TrainingService[] = [
     summary: "Gemeinsam unterwegs: Training und Austausch beim Spaziergang.",
     audience: "Für Mensch-Hund-Teams.",
     price: "39 € pro Stunde",
+    sortPrice: 39,
     isPlaceholder: false,
   },
   {
@@ -73,6 +78,7 @@ export const services: TrainingService[] = [
     summary: "Beratung am Telefon zu deinen Fragen rund um deinen Hund.",
     audience: "Für alle, die eine Frage klären möchten.",
     price: "60 € pro Stunde",
+    sortPrice: 60,
     isPlaceholder: false,
   },
   {
@@ -87,5 +93,10 @@ export const services: TrainingService[] = [
 ];
 
 export const featuredServices = services.filter((s) => s.featured);
+
+/** Für das Anfrageformular: von günstig nach teuer, Angebote ohne Preis ans Ende. */
+export const servicesByPrice = [...services].sort(
+  (a, b) => (a.sortPrice ?? Number.POSITIVE_INFINITY) - (b.sortPrice ?? Number.POSITIVE_INFINITY),
+);
 
 export const getServiceById = (id: string) => services.find((s) => s.id === id);

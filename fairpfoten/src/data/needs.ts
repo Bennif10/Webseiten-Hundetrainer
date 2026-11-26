@@ -2,8 +2,8 @@ import { Brain, Heart, HeartPulse, Moon, Signpost, Users } from "lucide-react";
 import type { DogNeed } from "@/types";
 
 /**
- * Die sechs Grundbedürfnisse – wörtlich aus dem Referenzplakat
- * „Was Hunde für ein gutes Leben brauchen“ übernommen.
+ * Die sechs Grundbedürfnisse – Grundlage ist das Plakat „Was Hunde für ein
+ * gutes Leben brauchen“; zwei Punkte wurden auf Wunsch der Trainerin angepasst.
  */
 export const needsIntro = {
   title: "Was Hunde für ein gutes Leben brauchen",
@@ -43,23 +43,19 @@ export const dogNeeds: DogNeed[] = [
   },
   {
     id: "sozial",
-    title: "Soziale Integration",
+    title: "Entspanntes Miteinander",
     icon: Users,
     points: [
-      "Soziale Integration in das familiäre und gesellschaftliche Umfeld",
-      "Angemessene soziale Kontakte ermöglichen",
+      "Familiäres Umfeld und Gesellschaft",
+      "Soziale Kontakte",
       "Individuelle Bedürfnisse und Grenzen des Hundes respektieren",
     ],
   },
   {
     id: "zuwendung",
-    title: "Emotionale Zuwendung",
+    title: "Nähe und Vertrauen",
     icon: Heart,
-    points: [
-      "Emotionale Zuwendung und liebevolle Aufmerksamkeit",
-      "Nähe ermöglichen, ohne den Hund emotional zu übersättigen",
-      "Vertrauen und eine sichere Beziehung aufbauen",
-    ],
+    points: ["Zuneigung zeigen", "Wertschätzung und Verständnis", "Vertrauen und eine sichere Beziehung aufbauen"],
   },
   {
     id: "grenzen",

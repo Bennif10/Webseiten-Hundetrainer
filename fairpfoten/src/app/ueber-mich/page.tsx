@@ -111,8 +111,8 @@ export default function AboutPage() {
               <>
                 <p>{htsPhilosophy}</p>
                 <p className="mt-4">
-                  Dabei habe ich immer im Blick, was Hunde für ein gutes Leben brauchen – die sechs Grundbedürfnisse
-                  als Fundament einer verantwortungsvollen Hundeerziehung.
+                  Dabei habe ich immer im Blick, was Hunde in meinen Augen für ein gutes Leben brauchen: 6
+                  Grundbedürfnisse als Fundament einer verantwortungsvollen Hundeerziehung.
                 </p>
               </>
             }
@@ -145,9 +145,12 @@ export default function AboutPage() {
           </h2>
           <ul className="mt-10 space-y-4">
             {qualifications.map((q) => (
-              <li key={q} className="flex gap-3 rounded-2xl bg-cream-50 p-5 shadow-soft">
+              <li key={q.title} className="flex gap-3 rounded-2xl bg-cream-50 p-5 shadow-soft">
                 <Sparkles className="mt-1 size-4 shrink-0 text-sage-600" aria-hidden />
-                {q}
+                <div>
+                  <p>{q.title}</p>
+                  {q.detail && <p className="mt-2 text-sm leading-relaxed text-ink-muted">{q.detail}</p>}
+                </div>
               </li>
             ))}
           </ul>

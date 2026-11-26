@@ -8,6 +8,10 @@ import type { InquiryQuestion } from "@/types";
  * Hier muss nichts regelmäßig gepflegt werden.
  */
 export const inquiryConfig = {
+  /** Hinweis über der Angebotsauswahl. */
+  serviceHint:
+    "Wenn du die Arbeit der Hundeteamschule noch nicht kennst, starten wir am besten mit einem Intensivtag – alleine oder in der Gruppe.",
+
   /** Wochentage, die zur Auswahl stehen (Training: Do–So). */
   weekdays: ["Donnerstag", "Freitag", "Samstag", "Sonntag"],
 

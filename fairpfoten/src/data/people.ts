@@ -1,6 +1,6 @@
 import elliImage from "../../public/images/hund-elli.jpg";
 import millaImage from "../../public/images/hund-milla.jpg";
-import type { Dog, Testimonial } from "@/types";
+import type { Dog, Qualification, Testimonial } from "@/types";
 
 /**
  * Kundenstimmen – ausschließlich echte Stimmen mit Einverständnis der Personen eintragen.
@@ -32,13 +32,20 @@ export const dogs: Dog[] = [
   },
 ];
 
-/** Qualifikationen & Erfahrungen (neueste zuerst). */
-export const qualifications: string[] = [
-  "HTS-Trainerin – Hundeteamschule Anita Balser – November 2026",
-  "HTS-Co-Trainerin – Hundeteamschule Anita Balser – Januar 2026",
-  "Erlaubnis nach § 11 Tierschutzgesetz zum Ausbilden von Hunden bzw. zur Anleitung der Ausbildung durch den Halter",
-  "Ausbildung zur Hundetrainerin – Ziemer & Falke – abgeschlossen Juli 2025",
-  "Beginn der Ausbildung zur HTS-Trainerin – Hundeteamschule Anita Balser – Dezember 2024",
+/** Qualifikationen & Erfahrungen (neueste zuerst). `detail` ist optional. */
+export const qualifications: Qualification[] = [
+  { title: "HTS-Trainerin – Hundeteamschule Anita Balser – November 2026" },
+  {
+    title: "HTS-Co-Trainerin – Hundeteamschule Anita Balser – Januar 2026",
+    detail:
+      "Teilnahme und Kundenanleitung bei diversen Seminaren der Hundeteamschule, z. B. „Jagd nach Ansprechbarkeit“, „Alleine ohne Leine – Leinenaggression“, „In Freiheit verbunden“ und „Teamsport“.",
+  },
+  {
+    title:
+      "Erlaubnis nach § 11 Tierschutzgesetz zum Ausbilden von Hunden bzw. zur Anleitung der Ausbildung durch den Halter",
+  },
+  { title: "Ausbildung zur Hundetrainerin – Ziemer & Falke – abgeschlossen Juli 2025" },
+  { title: "Beginn der Ausbildung zur HTS-Trainerin – Hundeteamschule Anita Balser – Dezember 2024" },
 ];
 
 /** Ausführliche Vorstellung für „Über mich“. */

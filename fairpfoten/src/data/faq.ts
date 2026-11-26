@@ -20,7 +20,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "Wo findet das Training statt?",
     answer:
-      "Nach Absprache – in Ebersbach und Umgebung. Es fallen Fahrtkosten von 0,48 € je km an, außer der Treffpunkt ist bei mir.",
+      "Nach Absprache – in Ebersbach und Umgebung. Die Trainingsorte richten sich nach euren individuellen Themen und Bedürfnissen. Bei Hausbesuchen und externen Trainingsorten berechne ich 0,48 € pro gefahrenen Kilometer; Training bei mir oder in meiner näheren Umgebung ist von Fahrtkosten ausgenommen.",
   },
   {
     question: "Wie kann ich einen Termin absagen?",

@@ -43,9 +43,9 @@ export const siteConfig = {
   /** Wann Training grundsätzlich stattfindet. */
   trainingTimes: "Donnerstag bis Sonntag nach Vereinbarung, zwischen 9 und 20 Uhr",
 
-  /** Hinweis zu allen Preisen. */
+  /** Hinweis zu Trainingsorten und Fahrtkosten (unter den Angeboten). */
   pricingNote:
-    "Alle Preise zzgl. Fahrtkosten von 0,48 € je km – außer der Treffpunkt ist bei mir. Als Kleinunternehmerin gemäß § 19 UStG weise ich keine Umsatzsteuer aus.",
+    "Die Trainingsorte richten sich nach euren individuellen Themen und Bedürfnissen. Bei Hausbesuchen und externen Trainingsorten berechne ich 0,48 € pro gefahrenen Kilometer. Training bei mir oder in meiner näheren Umgebung ist von Fahrtkosten ausgenommen.",
 
   contact,
   address,

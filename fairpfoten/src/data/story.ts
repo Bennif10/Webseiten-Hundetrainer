@@ -1,6 +1,12 @@
-/**
- * Einleitungstext der Startseite – aus dem Text von Stefanie Rathmer übernommen.
- */
+/** Texte der Startseite – von Stefanie Rathmer. */
+
+/** Einleitung im Kopfbereich der Startseite. */
+export const heroIntro = [
+  "Eine echte Mensch-Hund-Beziehung wächst aus Zuneigung und Respekt. Sie schafft Vertrauen, gibt Orientierung und Sicherheit und bildet das Fundament für ein gemeinsames Leben, in dem sich beide wohlfühlen und aufeinander verlassen können.",
+  "Ich begegne Mensch und Hund mit Klarheit, Wertschätzung und Empathie. Mein Ziel ist nicht, einfach Anweisungen zu geben, sondern Verständnis zu schaffen – für den Hund, für sich selbst und für die Basis, auf der echte Kommunikation und Vertrauen wachsen können.",
+];
+
+/** Abschnitt „Vielleicht hast du schon alles versucht“. */
 export const story = {
   opening: ["Vielleicht hast du schon alles versucht.", "Hundeschule. Tipps. Methoden."],
   struggle: "Und trotzdem fühlt sich euer Alltag oft schwer an.",

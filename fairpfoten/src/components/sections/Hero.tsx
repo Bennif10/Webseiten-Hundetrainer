@@ -4,6 +4,7 @@ import heroImage from "../../../public/images/trainerin-mit-hund.jpg";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/config/site";
+import { heroIntro } from "@/data/story";
 
 export function Hero() {
   return (
@@ -26,11 +27,11 @@ export function Hero() {
           <h1 id="hero-title" className="text-[2.9rem] leading-[1.02] sm:text-6xl lg:text-[4.6rem]">
             Hundetraining <em className="text-sage-600">mit Herz</em> und Haltung.
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-muted sm:text-xl">
-            Ein Hund braucht mehr als Erziehung. Er braucht einen Menschen, der seine Bedürfnisse erkennt. Im
-            Training stehen genau diese Bedürfnisse im Mittelpunkt – <strong className="font-semibold text-ink">fair, klar
-            und individuell</strong>.
-          </p>
+          <div className="mt-6 max-w-xl space-y-4 text-lg leading-relaxed text-ink-muted">
+            {heroIntro.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+          </div>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href="/trainingsangebote" size="lg">
               Training entdecken

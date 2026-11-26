@@ -9,7 +9,7 @@ import { MailtoNotice } from "@/components/forms/MailtoNotice";
 import { Button } from "@/components/ui/Button";
 import { inquiryConfig } from "@/config/inquiry";
 import { siteConfig } from "@/config/site";
-import { getServiceById, services } from "@/data/services";
+import { getServiceById, servicesByPrice } from "@/data/services";
 import { buildInquiryEmail, getQuestionsFor, toMailtoUrl, type EmailDraft } from "@/lib/mail";
 import {
   hasErrors,
@@ -169,9 +169,9 @@ export function InquiryWidget() {
   return (
     <form noValidate onSubmit={handleSubmit} className="grid gap-8 lg:grid-cols-[1fr_24rem] lg:items-start">
       <div className="min-w-0 space-y-6">
-        <Step number={1} title="Angebot wählen" id="step-service">
+        <Step number={1} title="Angebot wählen" intro={inquiryConfig.serviceHint} id="step-service">
           <ServicePicker
-            services={services}
+            services={servicesByPrice}
             selected={serviceId}
             onSelect={(id) => {
               setServiceId(id);

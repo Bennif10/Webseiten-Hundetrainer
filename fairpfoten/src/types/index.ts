@@ -45,12 +45,20 @@ export interface TrainingService {
   duration?: string;
   /** Preis als Anzeige-Text, NUR wenn tatsächlich bekannt. */
   price?: string;
+  /** Niedrigster Preis in € – nur zum Sortieren im Anfrageformular (günstig → teuer). */
+  sortPrice?: number;
   /** Auf der Startseite als eines der Hauptangebote zeigen. */
   featured?: boolean;
   /** Zusätzliche Fragen im Anfrageformular nur für dieses Paket (optional). */
   inquiryQuestions?: InquiryQuestion[];
   /** true = Inhalt ist noch ein Platzhalter und muss ersetzt werden. */
   isPlaceholder: boolean;
+}
+
+export interface Qualification {
+  title: string;
+  /** Zusätzliche Erläuterung unter dem Titel (optional). */
+  detail?: string;
 }
 
 export interface FaqItem {
