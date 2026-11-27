@@ -9,7 +9,7 @@ import { MailtoNotice } from "@/components/forms/MailtoNotice";
 import { Button } from "@/components/ui/Button";
 import { inquiryConfig } from "@/config/inquiry";
 import { siteConfig } from "@/config/site";
-import { getServiceById, servicesByPrice } from "@/data/services";
+import { getServiceById, inquirableServices } from "@/data/services";
 import { buildInquiryEmail, getQuestionsFor, toMailtoUrl, type EmailDraft } from "@/lib/mail";
 import {
   hasErrors,
@@ -55,7 +55,7 @@ export function InquiryWidget() {
 
   const [serviceId, setServiceId] = useState<string | null>(() => {
     const fromUrl = searchParams.get("angebot");
-    return fromUrl && getServiceById(fromUrl) ? fromUrl : null;
+    return fromUrl && inquirableServices.some((s) => s.id === fromUrl) ? fromUrl : null;
   });
   const [weekdays, setWeekdays] = useState<string[]>([]);
   const [dayparts, setDayparts] = useState<string[]>([]);
@@ -171,7 +171,7 @@ export function InquiryWidget() {
       <div className="min-w-0 space-y-6">
         <Step number={1} title="Angebot wählen" intro={inquiryConfig.serviceHint} id="step-service">
           <ServicePicker
-            services={servicesByPrice}
+            services={inquirableServices}
             selected={serviceId}
             onSelect={(id) => {
               setServiceId(id);

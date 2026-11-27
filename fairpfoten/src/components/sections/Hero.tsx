@@ -52,7 +52,9 @@ export function Hero() {
               priority
               placeholder="blur"
               sizes="(min-width: 1024px) 34rem, 100vw"
-              className="aspect-[4/3] w-full object-cover"
+              // Ausschnitt: etwas hineingezoomt und nach links verschoben, damit Steffi und
+              // der Hund mehr Raum bekommen und weniger Baum im Hintergrund zu sehen ist.
+              className="aspect-[4/3] w-full origin-[15%_85%] scale-110 object-cover object-left"
             />
           </div>
           <div className="absolute -bottom-6 left-4 rounded-2xl border border-sage-900/5 bg-cream-50/95 px-5 py-4 shadow-soft backdrop-blur sm:-left-6">

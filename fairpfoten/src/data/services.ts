@@ -1,28 +1,50 @@
 import type { TrainingService } from "@/types";
 
 /**
- * Trainingsangebote (Angaben aus dem Fragebogen von Stefanie Rathmer).
+ * Trainingsangebote (Angaben von Stefanie Rathmer).
  *
  * Felder:
  *   - `duration` / `price` nur eintragen, wenn sie feststehen
+ *   - `sortPrice` → niedrigster Preis in €, bestimmt die Reihenfolge (günstig → teuer)
  *   - `featured: true` → erscheint auf der Startseite (max. 3 sinnvoll)
- *   - `inquiryQuestions` → zusätzliche Fragen im Anfrageformular nur bei diesem Paket,
+ *   - `inquiryQuestions` → zusätzliche Fragen im Anfrageformular nur bei diesem Angebot,
  *     die auch in die E-Mail übernommen werden
+ *   - `externalUrl` → Angebot wird extern gebucht (Link statt Anfrage, nicht im Anfrageformular)
  *
  * Die `id` wird im Anfrageformular und in Links verwendet (/anfrage?angebot=<id>) –
  * bitte kurz und ohne Leerzeichen halten.
  */
-export const services: TrainingService[] = [
+const allServices: TrainingService[] = [
   {
-    id: "intensivtag",
-    title: "Intensivtag (INT)",
-    summary:
-      "Der Einstieg in die Arbeit nach der Hundeteamschule Anita Balser: ein Tag für neue Perspektiven und echte Veränderung – einer, der oft mehr bewegt als Monate von „Training“.",
-    audience: "Für Mensch-Hund-Teams, die die Arbeit nach HTS noch nicht kennen.",
-    duration: "3 Stunden",
-    price: "250 €",
-    sortPrice: 250,
-    featured: true,
+    id: "telefonberatung",
+    title: "Telefonberatung",
+    summary: "Beratung am Telefon zu deinen Fragen rund um deinen Hund.",
+    audience: "Für alle, die eine Frage klären möchten.",
+    duration: "30 Minuten oder 1 Stunde",
+    price: "30 Min.: 30 € · 1 Stunde: 60 €",
+    sortPrice: 30,
+    inquiryQuestions: [{ id: "beratung-dauer", label: "30 Minuten oder 1 Stunde?", placeholder: "30 Minuten / 1 Stunde" }],
+    isPlaceholder: false,
+  },
+  {
+    id: "walk-and-talk",
+    title: "Walk & Talk",
+    summary: "Gemeinsam unterwegs: Training und Austausch beim Spaziergang.",
+    audience: "Für Mensch-Hund-Teams.",
+    duration: "1 Stunde",
+    price: "39 €",
+    sortPrice: 39,
+    isPlaceholder: false,
+  },
+  {
+    id: "lernkontrolle",
+    title: "Lernkontrolle",
+    summary: "Der Folgetermin nach einem Intensivtag oder Gruppenintensivtag. Gruppenlernkontrollen auf Anfrage.",
+    audience: "Für Teams, die bereits an einem INT, GINT o. Ä. teilgenommen haben.",
+    duration: "1 Stunde",
+    price: "80 €",
+    sortPrice: 80,
+    inquiryQuestions: [{ id: "letzter-termin", label: "Wann war dein INT / GINT?", placeholder: "z. B. März 2026" }],
     isPlaceholder: false,
   },
   {
@@ -32,10 +54,22 @@ export const services: TrainingService[] = [
       "Der Intensivtag in der kleinen Gruppe: Ihr startet gemeinsam mit anderen Teams in die Arbeit nach HTS.",
     audience: "Ab 2 Mensch-Hund-Teams, die die Arbeit nach HTS noch nicht kennen.",
     duration: "4 Stunden",
-    price: "190 € bei 2 Teams · 165 € bei 3 Teams",
+    price: "bei 3 Teams 165 € · bei 2 Teams 195 €",
     sortPrice: 165,
     featured: true,
     inquiryQuestions: [{ id: "anzahl-teams", label: "Mit wie vielen Teams kommt ihr?", placeholder: "z. B. 2" }],
+    isPlaceholder: false,
+  },
+  {
+    id: "intensivtag",
+    title: "Einzelintensivtag (INT)",
+    summary:
+      "Der Einstieg in die Arbeit nach der Hundeteamschule Anita Balser: ein Tag für neue Perspektiven und echte Veränderung – einer, der oft mehr bewegt als Monate von „Training“.",
+    audience: "Für Mensch-Hund-Teams, die die Arbeit nach HTS noch nicht kennen.",
+    duration: "3 Stunden",
+    price: "250 €",
+    sortPrice: 250,
+    featured: true,
     isPlaceholder: false,
   },
   {
@@ -54,49 +88,25 @@ export const services: TrainingService[] = [
     isPlaceholder: false,
   },
   {
-    id: "lernkontrolle",
-    title: "Lernkontrolle",
-    summary: "Der Folgetermin nach einem Intensivtag oder Gruppenintensivtag.",
-    audience: "Für Teams, die bereits an einem INT, GINT o. Ä. teilgenommen haben.",
-    price: "80 €",
-    sortPrice: 80,
-    inquiryQuestions: [{ id: "letzter-termin", label: "Wann war dein INT / GINT?", placeholder: "z. B. März 2026" }],
-    isPlaceholder: false,
-  },
-  {
-    id: "walk-and-talk",
-    title: "Walk and Talk",
-    summary: "Gemeinsam unterwegs: Training und Austausch beim Spaziergang.",
-    audience: "Für Mensch-Hund-Teams.",
-    price: "39 € pro Stunde",
-    sortPrice: 39,
-    isPlaceholder: false,
-  },
-  {
-    id: "telefonberatung",
-    title: "Telefonberatung",
-    summary: "Beratung am Telefon zu deinen Fragen rund um deinen Hund.",
-    audience: "Für alle, die eine Frage klären möchten.",
-    price: "60 € pro Stunde",
-    sortPrice: 60,
-    isPlaceholder: false,
-  },
-  {
-    id: "weitere-angebote",
-    title: "Einzeltraining, Social Walks & Seminare",
+    id: "seminare",
+    title: "Seminare",
     summary:
-      "Natürlich begleite ich euch auch im Einzeltraining, bei Social Walks und in Seminaren. Sprich mich einfach an.",
+      "Seminare der Hundeteamschule Anita Balser – Themen, Termine und Orte findest du direkt auf der Website der Hundeteamschule.",
     audience: "Für Mensch-Hund-Teams.",
-    price: "auf Anfrage",
+    externalUrl: "https://hundeteamschule.de/seminare/",
     isPlaceholder: false,
   },
 ];
 
-export const featuredServices = services.filter((s) => s.featured);
-
-/** Für das Anfrageformular: von günstig nach teuer, Angebote ohne Preis ans Ende. */
-export const servicesByPrice = [...services].sort(
+/** Alle Angebote, von günstig nach teuer; Angebote ohne Preis stehen am Ende. */
+export const services: TrainingService[] = [...allServices].sort(
   (a, b) => (a.sortPrice ?? Number.POSITIVE_INFINITY) - (b.sortPrice ?? Number.POSITIVE_INFINITY),
 );
+
+/** Hauptangebote für die Startseite (ebenfalls nach Preis sortiert). */
+export const featuredServices = services.filter((s) => s.featured);
+
+/** Angebote, die über das Anfrageformular angefragt werden können. */
+export const inquirableServices = services.filter((s) => !s.externalUrl);
 
 export const getServiceById = (id: string) => services.find((s) => s.id === id);

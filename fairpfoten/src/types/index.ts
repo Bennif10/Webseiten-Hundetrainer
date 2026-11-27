@@ -49,6 +49,8 @@ export interface TrainingService {
   sortPrice?: number;
   /** Auf der Startseite als eines der Hauptangebote zeigen. */
   featured?: boolean;
+  /** Wird extern gebucht: Link statt „Anfragen“, erscheint nicht im Anfrageformular. */
+  externalUrl?: string;
   /** Zusätzliche Fragen im Anfrageformular nur für dieses Paket (optional). */
   inquiryQuestions?: InquiryQuestion[];
   /** true = Inhalt ist noch ein Platzhalter und muss ersetzt werden. */

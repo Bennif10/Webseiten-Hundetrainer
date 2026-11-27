@@ -12,7 +12,7 @@ import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata({
   title: "Trainingsangebote",
   description:
-    "Intensivtag, Gruppenintensivtag, Welpenpaket, Walk and Talk und mehr: die Trainingsangebote von Fairpfoten Hundetraining in Ebersbach und Umgebung – mit Preisen.",
+    "Telefonberatung, Walk & Talk, Lernkontrolle, Gruppen- und Einzelintensivtag, Welpenpaket und Seminare: die Trainingsangebote von Fairpfoten Hundetraining in Ebersbach und Umgebung – mit Preisen.",
   path: "/trainingsangebote",
 });
 
@@ -21,7 +21,7 @@ export default function ServicesPage() {
     <>
       <PageHero
         eyebrow="Trainingsangebote"
-        title="Training, das den ganzen Hund sieht"
+        title="Training, das nicht nur den ganzen Hund sieht – sondern auch den Menschen dazu."
         intro="Es gibt kein Patentrezept: Jedes Training richtet sich nach euch als Mensch-Hund-Team. Wenn du die Arbeit nach der Hundeteamschule Anita Balser noch nicht kennst, starten wir in der Regel mit einem Intensivtag."
       />
 

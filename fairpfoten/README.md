@@ -329,7 +329,7 @@ Stand: Fragebogen von Stefanie Rathmer eingearbeitet. Es fehlen noch bzw. sind z
 - **GINT-Preis**: Sind 190 € / 165 € pro Team gemeint?
 - **Social Media**: „steff!srat“ – welche Plattform, vollständiger Link?
 - **Markenname**: Verhältnis Fairpfoten ↔ Hundeteamschule Anita Balser (Namensnutzung ggf. abstimmen)
-- Kurzbeschreibungen von Lernkontrolle, Walk and Talk und Telefonberatung sowie die „Für wen“-Zeilen
+- Kurzbeschreibungen von Lernkontrolle, Walk & Talk und Telefonberatung sowie die „Für wen“-Zeilen
   wurden aus den Angaben abgeleitet – bitte von der Trainerin gegenlesen lassen
 - Dauer der Lernkontrolle
 - Fotos in hoher Auflösung (Startseite, Porträt) und Logo als SVG

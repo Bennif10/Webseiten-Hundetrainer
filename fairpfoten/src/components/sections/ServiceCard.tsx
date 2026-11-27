@@ -1,4 +1,4 @@
-import { ArrowRight, Clock, Users } from "lucide-react";
+import { ArrowRight, Clock, ExternalLink, Users } from "lucide-react";
 import Link from "next/link";
 import { Text } from "@/components/ui/Placeholder";
 import type { TrainingService } from "@/types";
@@ -43,14 +43,27 @@ export function ServiceCard({ service, index }: { service: TrainingService; inde
         )}
       </dl>
 
-      <Link
-        href={`/anfrage?angebot=${encodeURIComponent(service.id)}`}
-        className="mt-auto inline-flex items-center gap-2 self-start pt-7 font-medium text-sage-700 transition-colors hover:text-sage-900"
-      >
-        Anfragen
-        <span className="sr-only">: {service.title}</span>
-        <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
-      </Link>
+      {service.externalUrl ? (
+        <a
+          href={service.externalUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-auto inline-flex items-center gap-2 self-start pt-7 font-medium text-sage-700 transition-colors hover:text-sage-900"
+        >
+          Zu den Seminaren der Hundeteamschule
+          <ExternalLink className="size-4" aria-hidden />
+          <span className="sr-only">(öffnet in neuem Tab)</span>
+        </a>
+      ) : (
+        <Link
+          href={`/anfrage?angebot=${encodeURIComponent(service.id)}`}
+          className="mt-auto inline-flex items-center gap-2 self-start pt-7 font-medium text-sage-700 transition-colors hover:text-sage-900"
+        >
+          Anfragen
+          <span className="sr-only">: {service.title}</span>
+          <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+        </Link>
+      )}
     </article>
   );
 }
