@@ -1,6 +1,45 @@
+import { feedbackConfig, ratingCategories, ratingLabels } from "@/config/feedback";
 import { inquiryConfig } from "@/config/inquiry";
 import { siteConfig } from "@/config/site";
-import type { ContactRequest, InquiryQuestion, InquiryRequest, TrainingService } from "@/types";
+import { starString } from "@/lib/ratings";
+import type { ContactRequest, FeedbackRequest, InquiryQuestion, InquiryRequest, TrainingService } from "@/types";
+
+/** Feedback-E-Mail mit Sternen je Kategorie, Kommentar und Freigabe zur Veröffentlichung. */
+export function buildFeedbackEmail(req: FeedbackRequest): EmailDraft {
+  const { email: tpl } = feedbackConfig;
+  const name = req.name?.trim() ?? "";
+
+  const ratingLines = ratingCategories.map(({ id, label }) => {
+    const value = req.ratings[id];
+    return value ? `• ${label}: ${starString(value)} (${value}/5 – ${ratingLabels[value]})` : `• ${label}: [noch offen]`;
+  });
+
+  const publishLine = !req.publish
+    ? "[noch nicht ausgewählt]"
+    : req.publish === feedbackConfig.publishOptions[0]
+      ? `Ja – ${name ? `als „${name}“` : "anonym"}`
+      : "Nein, nur für dich";
+
+  const lines = [
+    tpl.greeting,
+    "",
+    tpl.intro,
+    "",
+    ...ratingLines,
+    "",
+    ...(req.comment?.trim() ? ["Mein Kommentar:", req.comment.trim(), ""] : []),
+    `Darf mein Feedback auf der Website erscheinen? ${publishLine}`,
+    "",
+    tpl.signOff,
+    name || "",
+  ];
+
+  return {
+    to: siteConfig.contact.email,
+    subject: tpl.subject(name),
+    body: lines.join("\n").trimEnd(),
+  };
+}
 
 /**
  * Aufbau der Anfrage-E-Mails.

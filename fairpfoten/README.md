@@ -201,6 +201,24 @@ Bestätigungsseite kopiert werden. Das wird auf der Website transparent kommuniz
 
 ---
 
+## Feedback & Kundenstimmen
+
+Kundinnen und Kunden bewerten ihr Training auf **/feedback** – ohne Konto, mit 1–5 Sternen in drei
+Kategorien (Fachliches Know-how, Fortschritt meines Hundes, Betreuung & Miteinander), optionalem
+Kommentar und der Frage, ob das Feedback veröffentlicht werden darf. Beim Absenden entsteht eine fertige
+E-Mail an die Trainerin (wie beim Anfrageformular).
+
+- **Link verteilen:** `https://www.fairpfoten.online/feedback/` nach dem Training per Messenger, E-Mail
+  oder als QR-Code. Die Seite ist bewusst nicht im Hauptmenü (nur im Footer) und für Suchmaschinen gesperrt.
+- **Veröffentlichen:** Nur Feedback mit „Ja, gerne“ in `src/data/people.ts` unter `testimonials`
+  eintragen (Format steht dort als Kommentar). Sobald mindestens ein Eintrag existiert, erscheint auf der
+  Startseite der Bereich „Was Mensch-Hund-Teams sagen“ mit Durchschnittswerten je Kategorie.
+- **Pflichthinweis:** Unter den Bewertungen steht, dass sie geprüft werden (§ 5b Abs. 3 UWG,
+  Text in `src/config/feedback.ts`). Keine erfundenen oder gekauften Bewertungen eintragen.
+- **Kategorien und Texte** ändern: `src/config/feedback.ts`.
+
+---
+
 ## Bilder austauschen
 
 Bilder liegen in `public/images/`:

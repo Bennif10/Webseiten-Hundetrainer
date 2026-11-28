@@ -3,8 +3,17 @@ import millaImage from "../../public/images/hund-milla.jpg";
 import type { Dog, Qualification, Testimonial } from "@/types";
 
 /**
- * Kundenstimmen – ausschließlich echte Stimmen mit Einverständnis der Personen eintragen.
+ * Kundenstimmen – NUR echte Bewertungen eintragen, die über /feedback kamen
+ * und bei denen die Person der Veröffentlichung zugestimmt hat.
  * Solange die Liste leer ist, wird der Bereich auf der Startseite ausgeblendet.
+ *
+ * Beispiel (Sterne 1–5 je Kategorie, Kommentar und Name optional):
+ *   {
+ *     ratings: { knowhow: 5, progress: 5, care: 5 },
+ *     comment: "Text aus der Feedback-E-Mail",
+ *     author: "Anna mit Charlie",   // weglassen = „Anonym“
+ *     date: "2026-11",
+ *   },
  */
 export const testimonials: Testimonial[] = [];
 

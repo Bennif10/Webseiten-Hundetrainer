@@ -79,9 +79,9 @@ export default function PrivacyPage() {
         Verbindung zu Servern von Google oder anderen Schriftanbietern statt.
       </p>
 
-      <h2>5. Kontakt- und Anfrageformular</h2>
+      <h2>5. Kontakt-, Anfrage- und Feedbackformular</h2>
       <p>
-        Kontakt- und Anfrageformular übermitteln keine Daten an einen Server. Deine Eingaben werden ausschließlich in
+        Kontakt-, Anfrage- und Feedbackformular übermitteln keine Daten an einen Server. Deine Eingaben werden ausschließlich in
         deinem Browser zu einer E-Mail zusammengestellt; beim Absenden öffnet sich dein eigenes E-Mail-Programm. Die Daten
         erreichen mich erst, wenn du diese E-Mail selbst abschickst. Für die weitere Verarbeitung gilt Abschnitt 6.
       </p>
@@ -99,7 +99,18 @@ export default function PrivacyPage() {
         Aufbewahrungspflichten (z. B. für Rechnungen) entgegenstehen.
       </p>
 
-      <h2>7. Deine Rechte</h2>
+      <h2>7. Feedback und Veröffentlichung von Bewertungen</h2>
+      <p>
+        Über das Feedbackformular kannst du dein Training bewerten (Sterne in drei Kategorien, optional ein Kommentar
+        und ein Anzeigename). Ich nutze dein Feedback, um mein Angebot zu verbessern (Art. 6 Abs. 1 lit. f DSGVO).
+      </p>
+      <p>
+        Nur wenn du ausdrücklich zustimmst, veröffentliche ich deine Bewertung auf dieser Website – mit dem von dir
+        gewählten Anzeigenamen oder anonym (Art. 6 Abs. 1 lit. a DSGVO). Deine E-Mail-Adresse wird nie veröffentlicht. Du
+        kannst deine Einwilligung jederzeit per E-Mail widerrufen; die Bewertung entferne ich dann von der Website.
+      </p>
+
+      <h2>8. Deine Rechte</h2>
       <p>Du hast im Rahmen der gesetzlichen Bestimmungen jederzeit das Recht auf:</p>
       <ul>
         <li>Auskunft über deine gespeicherten Daten (Art. 15 DSGVO)</li>
@@ -116,7 +127,7 @@ export default function PrivacyPage() {
         Baden-Württemberg.
       </p>
 
-      <h2>8. Stand</h2>
+      <h2>9. Stand</h2>
       <p>{LAST_UPDATED}</p>
     </LegalPage>
   );

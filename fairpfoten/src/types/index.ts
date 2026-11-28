@@ -69,10 +69,36 @@ export interface FaqItem {
   answer?: string;
 }
 
+/* ---------- Feedback & Bewertungen ---------- */
+
+export type RatingCategoryId = "knowhow" | "progress" | "care";
+
+export interface RatingCategory {
+  id: RatingCategoryId;
+  label: string;
+  /** Frage im Feedback-Formular. */
+  question: string;
+}
+
+/** Sterne 1–5 je Kategorie. */
+export type Ratings = Record<RatingCategoryId, number>;
+
+/** Eine veröffentlichte Bewertung (nur mit Einverständnis der Person). */
 export interface Testimonial {
-  quote: string;
-  author: string;
-  isPlaceholder: boolean;
+  ratings: Ratings;
+  /** Kommentar (optional). */
+  comment?: string;
+  /** Anzeigename, z. B. "Anna mit Charlie". Leer = „Anonym“. */
+  author?: string;
+  /** Monat der Bewertung als "YYYY-MM", z. B. "2026-11". */
+  date: string;
+}
+
+export interface FeedbackRequest {
+  ratings: Partial<Ratings>;
+  comment?: string;
+  name?: string;
+  publish?: string;
 }
 
 export interface Dog {

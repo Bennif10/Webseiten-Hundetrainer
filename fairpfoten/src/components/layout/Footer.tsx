@@ -22,7 +22,7 @@ export function Footer() {
         <nav aria-label="Footer-Navigation">
           <h2 className="font-sans text-xs font-semibold tracking-[0.22em] text-sage-300 uppercase">Seiten</h2>
           <ul className="mt-4 space-y-2">
-            {mainNav.map((item) => (
+            {[...mainNav, { label: "Feedback geben", href: "/feedback" }].map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="text-sage-100 transition-colors hover:text-cream-50 hover:underline">
                   {item.label}
